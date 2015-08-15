@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoTypeChooseVC" customModule="PhotoBroswer" customModuleProvider="target">
+            <connections>
+                <outlet property="hostBtn" destination="SJh-TX-Uj5" id="D4v-AD-xDb"/>
+                <outlet property="localBtn" destination="3WT-Yo-jKw" id="jRG-AF-K44"/>
+                <outlet property="titleLabel" destination="04X-0z-Yr2" id="ZFd-r5-sxl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择类型" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04X-0z-Yr2">
+                    <rect key="frame" x="0.0" y="84" width="600" height="300"/>
+                    <color key="backgroundColor" red="0.92042635299999997" green="0.9004839188" blue="0.88753161619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="04X-0z-Yr2" secondAttribute="height" multiplier="2:1" id="8Yi-zc-jEr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" red="0.27450980390000002" green="0.70588235290000001" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3WT-Yo-jKw">
+                    <rect key="frame" x="0.0" y="348" width="280" height="183"/>
+                    <color key="backgroundColor" red="0.5" green="0.5" blue="0.72782175159999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="3WT-Yo-jKw" secondAttribute="height" multiplier="23:15" id="yUm-3w-fbD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                    <state key="normal" title="本地相册">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnClick:" destination="-1" eventType="touchUpInside" id="CDD-lq-YnS"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJh-TX-Uj5">
+                    <rect key="frame" x="320" y="348" width="280" height="183"/>
+                    <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                    <state key="normal" title="网络相册">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnClick:" destination="-1" eventType="touchUpInside" id="bje-5r-Sls"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="SJh-TX-Uj5" firstAttribute="height" secondItem="3WT-Yo-jKw" secondAttribute="height" id="0fF-Td-6Pu"/>
+                <constraint firstItem="04X-0z-Yr2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0mO-Js-YSb"/>
+                <constraint firstAttribute="bottom" secondItem="3WT-Yo-jKw" secondAttribute="bottom" constant="69" id="Be4-QX-hO9"/>
+                <constraint firstAttribute="trailing" secondItem="04X-0z-Yr2" secondAttribute="trailing" id="EyY-l5-K02"/>
+                <constraint firstItem="3WT-Yo-jKw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fRt-kl-dXC"/>
+                <constraint firstAttribute="trailing" secondItem="SJh-TX-Uj5" secondAttribute="trailing" id="o8b-uz-gCi"/>
+                <constraint firstItem="SJh-TX-Uj5" firstAttribute="bottom" secondItem="3WT-Yo-jKw" secondAttribute="bottom" id="oMl-CX-tK8"/>
+                <constraint firstItem="SJh-TX-Uj5" firstAttribute="leading" secondItem="3WT-Yo-jKw" secondAttribute="trailing" constant="40" id="x0K-jg-Eb5"/>
+                <constraint firstItem="SJh-TX-Uj5" firstAttribute="width" secondItem="3WT-Yo-jKw" secondAttribute="width" id="yib-us-nSw"/>
+                <constraint firstItem="04X-0z-Yr2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="z6c-38-K3L"/>
+            </constraints>
+            <point key="canvasLocation" x="453" y="380"/>
+        </view>
+    </objects>
+</document>

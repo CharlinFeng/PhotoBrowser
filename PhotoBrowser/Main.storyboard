@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ys6-jj-0NR">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Charlin Feng-->
+        <scene sceneID="Zg8-NZ-08V">
+            <objects>
+                <navigationController id="2Cv-ii-rCU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Charlin Feng" id="SFN-0j-mhV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IOA-FP-kLP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="a3G-dt-4iG" kind="relationship" relationship="rootViewController" id="qZ7-u6-Uz4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yAp-PW-t2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="256"/>
+        </scene>
+        <!--中国·成都冯成林原创-->
+        <scene sceneID="khK-kV-RGP">
+            <objects>
+                <viewController id="a3G-dt-4iG" customClass="LangVC" customModule="PhotoBroswer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F1S-mz-T8M"/>
+                        <viewControllerLayoutGuide type="bottom" id="gjP-FB-7DC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SIk-fk-bHE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="照片浏览器终结者  Photo Browser Terminator" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaS-1O-iCh">
+                                <rect key="frame" x="0.0" y="84" width="600" height="300"/>
+                                <color key="backgroundColor" red="0.92042635299999997" green="0.9004839188" blue="0.88753161619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vaS-1O-iCh" secondAttribute="height" multiplier="2:1" id="L8u-X4-MoC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" red="0.27450980390000002" green="0.70588235290000001" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StH-39-ZrP">
+                                <rect key="frame" x="20" y="372" width="280" height="159"/>
+                                <color key="backgroundColor" red="0.5" green="0.5" blue="0.72782175159999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="StH-39-ZrP" secondAttribute="height" multiplier="260:147" id="7V2-B7-gtf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="English">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnClick:" destination="a3G-dt-4iG" eventType="touchUpInside" id="SvO-EL-heX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-03-rpf">
+                                <rect key="frame" x="320" y="372" width="280" height="159"/>
+                                <color key="backgroundColor" red="1" green="0.52549019607843139" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="中文版本">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnClick:" destination="a3G-dt-4iG" eventType="touchUpInside" id="za5-iV-bqf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SIm-03-rpf" firstAttribute="leading" secondItem="StH-39-ZrP" secondAttribute="trailing" constant="20" id="86U-bz-Kf4"/>
+                            <constraint firstItem="SIm-03-rpf" firstAttribute="trailing" secondItem="vaS-1O-iCh" secondAttribute="trailing" id="AT9-ej-wbL"/>
+                            <constraint firstAttribute="trailing" secondItem="vaS-1O-iCh" secondAttribute="trailing" id="Axj-is-CHZ"/>
+                            <constraint firstItem="vaS-1O-iCh" firstAttribute="leading" secondItem="SIk-fk-bHE" secondAttribute="leading" id="Eu8-8X-oDy"/>
+                            <constraint firstItem="gjP-FB-7DC" firstAttribute="top" secondItem="StH-39-ZrP" secondAttribute="bottom" constant="20" id="KQv-lw-2GD"/>
+                            <constraint firstItem="vaS-1O-iCh" firstAttribute="leading" secondItem="StH-39-ZrP" secondAttribute="leading" id="TOV-Mt-k9P"/>
+                            <constraint firstItem="vaS-1O-iCh" firstAttribute="top" secondItem="F1S-mz-T8M" secondAttribute="bottom" constant="20" id="hyL-4z-Qdl"/>
+                            <constraint firstItem="SIm-03-rpf" firstAttribute="width" secondItem="StH-39-ZrP" secondAttribute="width" id="i2q-aX-Gdk"/>
+                            <constraint firstItem="SIm-03-rpf" firstAttribute="bottom" secondItem="StH-39-ZrP" secondAttribute="bottom" id="lYv-aw-knP"/>
+                            <constraint firstItem="StH-39-ZrP" firstAttribute="top" secondItem="vaS-1O-iCh" secondAttribute="bottom" constant="20" id="lyC-Gw-VJB"/>
+                            <constraint firstItem="SIm-03-rpf" firstAttribute="height" secondItem="StH-39-ZrP" secondAttribute="height" id="nGe-t7-0uR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="lyC-Gw-VJB"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="中国·成都冯成林原创" id="JjZ-xH-wOf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wye-uX-6Ji" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="256"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="XDg-AC-Ey0">
+            <objects>
+                <tabBarController id="Ys6-jj-0NR" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="0z3-5v-yDo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="2Cv-ii-rCU" kind="relationship" relationship="viewControllers" id="cb5-FS-at5"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PgH-Bn-1Pg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-452" y="256"/>
+        </scene>
+    </scenes>
+</document>
