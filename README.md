@@ -10,7 +10,8 @@
 
 <br/>
 ####本框架包比较大，你最好现在先开始下载。不然你可能会等很久。
-##### Charlin Feng作为国内较早使用Swift开发框架和企业正式项目的开发者，诚开Swift专业群，欢迎加入纯Swift学习交流平台：467237044
+##### Charlin Feng作为国内较早使用Swift开发框架和企业正式项目的开发者，诚开Swift专业群，欢迎加入纯Swift学习交流平台我们共进退：
+##### QQ群号:467237044
 <br/>
 ### （一）总体说明
 1.本框架有OC版本，本次主要是汲取了OC版本所有bug与不足，同时听取在大量使用者的反馈与心声、修复与极大的改善了之前的OC版本并在此基础之上精心推出的Swift完美版，https://github.com/nsdictionary/CorePhotoBrowserVC。<br/>
