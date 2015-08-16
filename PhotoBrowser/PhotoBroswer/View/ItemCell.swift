@@ -50,6 +50,8 @@ class ItemCell: UICollectionViewCell {
     
     var isDeinit: Bool = false
     
+    var isAlive: Bool = true
+    
     lazy private var doubleTapGesture: UITapGestureRecognizer = {
         
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: "doubleTap:")
@@ -168,6 +170,8 @@ extension ItemCell: UIScrollViewDelegate{
             
             cache.fetch(key: photoModel.hostHDImgURL,  failure: {[unowned self] fail in
                 
+                if !self.isAlive {return}
+                
                 self.showAsHUD()
                 
                 self.imageV.image = self.photoModel.hostThumbnailImg
@@ -175,6 +179,8 @@ extension ItemCell: UIScrollViewDelegate{
                 self.cache.fetch(URL: NSURL(string: self.photoModel.hostHDImgURL)!, formatName: self.photoModel.hostHDImgURL, failure: nil, success: {[unowned self] img in
                     
                     if !NSUserDefaults.standardUserDefaults().boolForKey(CFPBShowKey) {return}
+                    
+                    if !self.isAlive {return}
                     
                     if self.photoModel?.excetionFlag == false {return}
                     
@@ -188,6 +194,8 @@ extension ItemCell: UIScrollViewDelegate{
                 })
                 
             }, success: {[unowned self] img in
+                
+                if !self.isAlive {return}
                 
                 self.dismissAsHUD(false)
                 
