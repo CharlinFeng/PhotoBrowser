@@ -1,6 +1,6 @@
 //
-//  PhotoBroswer.swift
-//  PhotoBroswer
+//  PhotoBrowser.swift
+//  PhotoBrowser
 //
 //  Created by 成林 on 15/7/29.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoBroswer: UIViewController {
+class PhotoBrowser: UIViewController {
     
     lazy var collectionView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: Layout())
 

@@ -1,6 +1,6 @@
 //
 //  DisplayVC+Host.swift
-//  PhotoBroswer
+//  PhotoBrowser
 //
 //  Created by 冯成林 on 15/8/14.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -95,18 +95,18 @@ extension DisplayVC{
     func showHost(index: Int){
         
         
-        let pbVC = PhotoBroswer()
+        let pbVC = PhotoBrowser()
         
         /**  设置相册展示样式  */
         pbVC.showType = showType
         
         /**  设置相册类型  */
-        pbVC.photoType = PhotoBroswer.PhotoType.Host
+        pbVC.photoType = PhotoBrowser.PhotoType.Host
         
         //强制关闭显示一切信息
         pbVC.hideMsgForZoomAndDismissWithSingleTap = true
         
-        var models: [PhotoBroswer.PhotoModel] = []
+        var models: [PhotoBrowser.PhotoModel] = []
         
         let titles = langType == LangType.Chinese ? titleHostCH : titleHostEN
         let descs = langType == LangType.Chinese ? descHostCH : descHostEN
@@ -114,7 +114,7 @@ extension DisplayVC{
         //模型数据数组
         for (var i=0; i<9; i++){
             
-            let model = PhotoBroswer.PhotoModel(hostHDImgURL: hostHDImageUrls[i], hostThumbnailImg: (displayView.subviews[i] as! UIImageView).image, titleStr: titles[i], descStr: descs[i], sourceView: displayView.subviews[i] as! UIView)
+            let model = PhotoBrowser.PhotoModel(hostHDImgURL: hostHDImageUrls[i], hostThumbnailImg: (displayView.subviews[i] as! UIImageView).image, titleStr: titles[i], descStr: descs[i], sourceView: displayView.subviews[i] as! UIView)
 
             models.append(model)
         }

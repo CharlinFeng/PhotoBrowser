@@ -1,6 +1,6 @@
 //
-//  PhotoBroswer+Main.swift
-//  PhotoBroswer
+//  PhotoBrowser+Main.swift
+//  PhotoBrowser
 //
 //  Created by 成林 on 15/7/29.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-extension PhotoBroswer{
+extension PhotoBrowser{
     
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ extension PhotoBroswer{
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "singleTapAction", name: CFPBSingleTapNofi, object: nil)
     
-        if showType != PhotoBroswer.ShowType.ZoomAndDismissWithSingleTap {
+        if showType != PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap {
             
             dismissBtn = UIButton(frame: CGRectMake(0, 0, 40, 40))
             dismissBtn.setBackgroundImage(UIImage(named: "pic.bundle/cancel"), forState: UIControlState.Normal)
@@ -88,7 +88,7 @@ extension PhotoBroswer{
     /**  单击事件  */
     func singleTapAction(){
         
-        if showType != PhotoBroswer.ShowType.ZoomAndDismissWithSingleTap {
+        if showType != PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap {
         
             isHiddenBar = !isHiddenBar
             
@@ -199,7 +199,7 @@ extension PhotoBroswer{
             /** 展示动画 */
             zoomInWithAnim(index)
             
-            if showType == PhotoBroswer.ShowType.ZoomAndDismissWithSingleTap && hideMsgForZoomAndDismissWithSingleTap {
+            if showType == PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap && hideMsgForZoomAndDismissWithSingleTap {
             
                 /** pagecontrol准备 */
                 pagecontrolPrepare()

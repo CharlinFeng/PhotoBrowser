@@ -1,6 +1,6 @@
 //
-//  PhotoBroswer+Indicator.swift
-//  PhotoBroswer
+//  PhotoBrowser+Indicator.swift
+//  PhotoBrowser
 //
 //  Created by 冯成林 on 15/8/13.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PhotoBroswer{
+extension PhotoBrowser{
     
     /** pagecontrol准备 */
     func pagecontrolPrepare(){
@@ -26,7 +26,7 @@ extension PhotoBroswer{
         
         if page<0 || page>=photoModels.count {return}
         
-        if showType == PhotoBroswer.ShowType.ZoomAndDismissWithSingleTap && hideMsgForZoomAndDismissWithSingleTap{
+        if showType == PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap && hideMsgForZoomAndDismissWithSingleTap{
         
             pagecontrol.currentPage = page
         }

@@ -1,6 +1,6 @@
 //
 //  Display+Local.swift
-//  PhotoBroswer
+//  PhotoBrowser
 //
 //  Created by 冯成林 on 15/8/14.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -51,18 +51,18 @@ extension DisplayVC {
     func showLocal(index: Int){
         
         
-        let pbVC = PhotoBroswer()
+        let pbVC = PhotoBrowser()
         
         /**  设置相册展示样式  */
         pbVC.showType = showType
         
         /**  设置相册类型  */
-        pbVC.photoType = PhotoBroswer.PhotoType.Local
+        pbVC.photoType = PhotoBrowser.PhotoType.Local
         
         //强制关闭显示一切信息
         pbVC.hideMsgForZoomAndDismissWithSingleTap = true
         
-        var models: [PhotoBroswer.PhotoModel] = []
+        var models: [PhotoBrowser.PhotoModel] = []
         
         let title = langType == LangType.Chinese ? titleLocalCH : titleEN
         let desc = langType == LangType.Chinese ? descLocalCH : descLocalEN
@@ -70,7 +70,7 @@ extension DisplayVC {
         //模型数据数组
         for (var i=0; i<9; i++){
         
-           let model = PhotoBroswer.PhotoModel(localImg:UIImage(named: "\(i+1).jpg")! , titleStr: title, descStr:desc[i], sourceView: displayView.subviews[i] as! UIView)
+           let model = PhotoBrowser.PhotoModel(localImg:UIImage(named: "\(i+1).jpg")! , titleStr: title, descStr:desc[i], sourceView: displayView.subviews[i] as! UIView)
             
             models.append(model)
         }

@@ -1,6 +1,6 @@
 //
-//  PhotoBroswer+PBType.swift
-//  PhotoBroswer
+//  PhotoBrowser+PBType.swift
+//  PhotoBrowser
 //
 //  Created by 成林 on 15/8/2.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-extension PhotoBroswer{
+extension PhotoBrowser{
     
     /**  展示样式  */
     enum ShowType{

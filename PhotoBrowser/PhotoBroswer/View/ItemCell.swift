@@ -1,6 +1,6 @@
 //
 //  ItemCell.swift
-//  PhotoBroswer
+//  PhotoBrowser
 //
 //  Created by 成林 on 15/7/29.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -10,9 +10,9 @@ import UIKit
 
 class ItemCell: UICollectionViewCell {
     
-    var photoModel: PhotoBroswer.PhotoModel!{didSet{dataFill()}}
+    var photoModel: PhotoBrowser.PhotoModel!{didSet{dataFill()}}
     
-    var photoType: PhotoBroswer.PhotoType!
+    var photoType: PhotoBrowser.PhotoType!
     
     var isHiddenBar: Bool = true{didSet{toggleDisplayBottomBar(isHiddenBar)}}
     
@@ -143,7 +143,7 @@ extension ItemCell: UIScrollViewDelegate{
     /**  数据填充  */
     func dataFill(){
         
-        if photoType == PhotoBroswer.PhotoType.Local {
+        if photoType == PhotoBrowser.PhotoType.Local {
             
             /**  本地图片模式  */
             hasHDImage = true

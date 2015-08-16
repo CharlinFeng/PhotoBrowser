@@ -1,6 +1,6 @@
 //
-//  PhotoBroswer+ZoomAnim.swift
-//  PhotoBroswer
+//  PhotoBrowser+ZoomAnim.swift
+//  PhotoBrowser
 //
 //  Created by 冯成林 on 15/8/11.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 
 /** 力求用最简单的方式实现 */
-extension PhotoBroswer{
+extension PhotoBrowser{
     
     
     /** 展示动画: 妈妈，这里好复杂~~ */

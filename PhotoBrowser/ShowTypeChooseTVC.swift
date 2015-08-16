@@ -1,6 +1,6 @@
 //
 //  ShowTypeChooseVCTableViewController.swift
-//  PhotoBroswer
+//  PhotoBrowser
 //
 //  Created by 冯成林 on 15/8/14.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -53,10 +53,10 @@ extension ShowTypeChooseTVC{
         
         switch indexPath.row {
         
-            case 0:displayVC.showType = PhotoBroswer.ShowType.Push
-            case 1:displayVC.showType = PhotoBroswer.ShowType.Modal
-            case 2:displayVC.showType = PhotoBroswer.ShowType.ZoomAndDismissWithCancelBtnClick
-            case 3:displayVC.showType = PhotoBroswer.ShowType.ZoomAndDismissWithSingleTap
+            case 0:displayVC.showType = PhotoBrowser.ShowType.Push
+            case 1:displayVC.showType = PhotoBrowser.ShowType.Modal
+            case 2:displayVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick
+            case 3:displayVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap
             default: break
         }
         

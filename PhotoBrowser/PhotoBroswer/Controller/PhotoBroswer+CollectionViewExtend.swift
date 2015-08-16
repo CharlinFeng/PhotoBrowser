@@ -1,6 +1,6 @@
 //
-//  PhotoBroswer+CollectionView.swift
-//  PhotoBroswer
+//  PhotoBrowser+CollectionView.swift
+//  PhotoBrowser
 //
 //  Created by 成林 on 15/7/29.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-extension PhotoBroswer: UICollectionViewDataSource,UICollectionViewDelegate{
+extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
     
     var cellID: String {return "ItemCell"}
     
@@ -23,7 +23,7 @@ extension PhotoBroswer: UICollectionViewDataSource,UICollectionViewDelegate{
         super.viewDidAppear(animated)
         handleRotation(false)
         collectionView.hidden = false
-        let isZoomType = self.showType == PhotoBroswer.ShowType.ZoomAndDismissWithCancelBtnClick || self.showType == PhotoBroswer.ShowType.ZoomAndDismissWithSingleTap
+        let isZoomType = self.showType == PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick || self.showType == PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap
         
         if self.photoType == PhotoType.Local {
         
@@ -54,7 +54,7 @@ extension PhotoBroswer: UICollectionViewDataSource,UICollectionViewDelegate{
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         
-        let isZoomType = self.showType == PhotoBroswer.ShowType.ZoomAndDismissWithCancelBtnClick || self.showType == PhotoBroswer.ShowType.ZoomAndDismissWithSingleTap
+        let isZoomType = self.showType == PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick || self.showType == PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap
         
         if isZoomType {
             collectionView.hidden = true

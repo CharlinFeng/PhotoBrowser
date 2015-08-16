@@ -1,6 +1,6 @@
 //
 //  DisplayVC.swift
-//  PhotoBroswer
+//  PhotoBrowser
 //
 //  Created by 冯成林 on 15/8/14.
 //  Copyright (c) 2015年 冯成林. All rights reserved.
@@ -15,7 +15,7 @@ class DisplayVC: UIViewController {
     
     var photoType: PhotoType = PhotoType.Local
     
-    var showType: PhotoBroswer.ShowType = PhotoBroswer.ShowType.ZoomAndDismissWithSingleTap
+    var showType: PhotoBrowser.ShowType = PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap
 
     lazy var localImages: [String] = {["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg"]}()
 
