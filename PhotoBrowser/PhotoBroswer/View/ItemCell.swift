@@ -21,6 +21,9 @@ class ItemCell: UICollectionViewCell {
     /**  缓存  */
     var cache: Cache<UIImage>!
     
+    /**  format  */
+    var format: Format<UIImage>!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var imageV: ShowImageView!
@@ -100,6 +103,8 @@ extension ItemCell: UIScrollViewDelegate{
     
     func doubleTap(tapG: UITapGestureRecognizer){
         
+        if !hasHDImage {return}
+        
         let location = tapG.locationInView(tapG.view)
         
         if scrollView.zoomScale <= 1 {
@@ -148,6 +153,8 @@ extension ItemCell: UIScrollViewDelegate{
 
         }else{
             
+            self.hasHDImage = false
+            
             self.imgVHC.constant = CFPBThumbNailWH
             self.imgVWC.constant = CFPBThumbNailWH
             
@@ -157,23 +164,21 @@ extension ItemCell: UIScrollViewDelegate{
             
             if cache == nil {cache = Cache<UIImage>(name: CFPBCacheKey)}
             
+            if format == nil{format = Format(name: photoModel.hostHDImgURL, diskCapacity: 10 * 1024 * 1024, transform: nil)}
+            
             cache.fetch(key: photoModel.hostHDImgURL,  failure: {[unowned self] fail in
                 
                 self.showAsHUD()
                 
                 self.imageV.image = self.photoModel.hostThumbnailImg
                 
-                self.cache.fetch(URL: NSURL(string: self.photoModel.hostHDImgURL)!, failure: {[unowned self] fail in
-                    
-                    return 
-                    if !NSUserDefaults.standardUserDefaults().boolForKey(CFPBShowKey) {return}
-                    
-                
-                }, success: {[unowned self] img in
+                self.cache.fetch(URL: NSURL(string: self.photoModel.hostHDImgURL)!, formatName: self.photoModel.hostHDImgURL, failure: nil, success: {[unowned self] img in
                     
                     if !NSUserDefaults.standardUserDefaults().boolForKey(CFPBShowKey) {return}
                     
-                    if self.photoModel.hostHDImgURL == nil {return}
+                    if self.photoModel?.excetionFlag == false {return}
+                    
+                    if self.photoModel.modelCell !== self {return}
                     
                     self.hasHDImage = true
                     self.dismissAsHUD(true)
@@ -189,8 +194,6 @@ extension ItemCell: UIScrollViewDelegate{
                 self.imageV.image = img
 
                 self.hasHDImage = true
-                
-                println("已经缓存\(self.photoModel.hostHDImgURL!)")
 
                 /** 图片数据已经装载 */
 

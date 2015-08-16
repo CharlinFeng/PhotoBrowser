@@ -98,7 +98,7 @@ extension PhotoBroswer{
         let propImgV = UIImageView(frame: cellImageView.frame)
         propImgV.contentMode = UIViewContentMode.ScaleAspectFill
         propImgV.clipsToBounds = true
-        propImgV.image = cellImageView.image
+        propImgV.image = !cell.hasHDImage && photoModel.hostThumbnailImg == nil ? UIImage.imageWithColor(size: CGSizeMake(CFPBThumbNailWH, CFPBThumbNailWH)) : cellImageView.image
         propImgV.frame = cellImageView.frame
 
         vc.view.addSubview(propImgV)

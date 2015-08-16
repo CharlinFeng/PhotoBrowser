@@ -56,6 +56,8 @@ extension PhotoBroswer{
         
         if itemCell.imageV.image == nil {showHUD("图片未下载", autoDismiss: 2); return}
         
+        if !itemCell.hasHDImage {showHUD("图片未下载", autoDismiss: 2); return}
+        
         showHUD("保存中", autoDismiss: -1)
         
         //当前模型

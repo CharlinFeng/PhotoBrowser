@@ -81,7 +81,11 @@ extension PhotoBroswer: UICollectionViewDataSource,UICollectionViewDelegate{
         
         itemCell.vc = vc
         
-        itemCell.photoModel = photoModels[indexPath.row]
+        let photoModel = photoModels[indexPath.row]
+        
+        photoModel.modelCell = itemCell
+        
+        itemCell.photoModel = photoModel
         
         itemCell.countLabel.text = "\(indexPath.row + 1) / \(photoModels.count)"
         

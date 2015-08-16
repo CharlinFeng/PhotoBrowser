@@ -33,7 +33,11 @@ extension PhotoBroswer{
         
         var isLocal: Bool!
         
+        /**  暴力去除异常  */
+        var excetionFlag = false
         
+        /**  由于hanake有bug，增加此属性  */
+        var modelCell: UICollectionViewCell!
         
         /**  本地相册专业初始化方法  */
         init(localImg: UIImage!, titleStr: String!, descStr: String!, sourceView: UIView!){
@@ -44,6 +48,7 @@ extension PhotoBroswer{
             self.titleStr = titleStr
             self.descStr = descStr
             self.sourceView = sourceView
+            excetionFlag = true
         }
         
         
@@ -57,6 +62,7 @@ extension PhotoBroswer{
             self.titleStr = titleStr
             self.descStr = descStr
             self.sourceView = sourceView
+            excetionFlag = true
         }
         
     }
