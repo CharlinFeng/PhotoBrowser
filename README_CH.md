@@ -1,6 +1,6 @@
 ![image](./PhotoBrowser/title.jpg)
-
-
+<br/><br/>
+##[English Document](https://github.com/nsdictionary/PhotoBrowser/edit/master/README.md)
 <br/><br/><br/>
 照片浏览器终结者
 ===============
