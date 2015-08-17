@@ -139,7 +139,7 @@ add an attribute in info.plist with: View controller-based status bar appearance
 
 <br/>
 #### (4) tabBar, no NavBar
-attention: the photo browser is based on a vc. you’d better not use vc.edgesForExtendedLayout . in case of the photo browser  with a non-full-screen state.
+attention: the photo browser is based on a vc. you’d better not use vc.edgesForExtendedLayout . in case of the photo browser  with a non-full-screen state.<br/>
 ![image](./PhotoBrowser/Show/4.gif)<br/>
 
 <br/>
@@ -189,7 +189,7 @@ attention: the photo browser is based on a vc. you’d better not use vc.edgesFo
 <br/>
 #### (14) one-click pattern: without any info
 attention: the effect is active under ZoomAndDismissWithSingleTap sence
-pbVC.hideMsgForZoomAndDismissWithSingleTap = true
+pbVC.hideMsgForZoomAndDismissWithSingleTap = true<br/>
 ![image](./PhotoBrowser/Show/18.gif)<br/>
 
 <br/>
