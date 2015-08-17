@@ -166,7 +166,9 @@ extension ItemCell: UIScrollViewDelegate{
             
             if cache == nil {cache = Cache<UIImage>(name: CFPBCacheKey)}
             
-            if format == nil{format = Format(name: photoModel.hostHDImgURL, diskCapacity: 10 * 1024 * 1024, transform: nil)}
+            if format == nil{format = Format(name: photoModel.hostHDImgURL, diskCapacity: 10 * 1024 * 1024, transform: { img in
+                return img
+            })}
             
             cache.fetch(key: photoModel.hostHDImgURL,  failure: {[unowned self] fail in
                 
@@ -176,7 +178,11 @@ extension ItemCell: UIScrollViewDelegate{
                 
                 self.imageV.image = self.photoModel.hostThumbnailImg
                 
-                self.cache.fetch(URL: NSURL(string: self.photoModel.hostHDImgURL)!, formatName: self.photoModel.hostHDImgURL, failure: nil, success: {[unowned self] img in
+                self.cache.fetch(URL: NSURL(string: self.photoModel.hostHDImgURL)!, failure: {fail in
+                    
+                    println("失败\(fail)")
+                    
+                    }, success: {[unowned self] img in
                     
                     if !NSUserDefaults.standardUserDefaults().boolForKey(CFPBShowKey) {return}
                     

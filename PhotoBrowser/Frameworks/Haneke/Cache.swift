@@ -57,7 +57,7 @@ public class Cache<T : DataConvertible where T.Result == T, T : DataRepresentabl
     }
     
     deinit {
-        println("来了这里")
+ 
         let notifications = NSNotificationCenter.defaultCenter()
         notifications.removeObserver(memoryWarningObserver, name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
     }
