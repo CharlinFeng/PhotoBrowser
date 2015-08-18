@@ -35,7 +35,7 @@ drag folder PhotoBrowser、Frameworks into your project.
 ###  2.introduction to local and network photo album
 
 <br/>
-#### 2.1local photo album
+#### 2.1 local photo album
 
 /** local photo album */
 func showLocal(index: Int){
@@ -130,7 +130,7 @@ photo browser initial with the current  view controller rather than navigationVC
 
 
 #### (2) no NavBar and TabBar
-add an attribute in info.plist with: View controller-based status bar appearance and set the value NO。<br/>
+add an attribute in info.plist with: View controller-based status bar appearance and set the value<br/>
 ![image](./PhotoBrowser/Show/2.gif)<br/>
 
 <br/>
@@ -143,7 +143,7 @@ attention: the photo browser is based on a vc. you’d better not use vc.edgesFo
 ![image](./PhotoBrowser/Show/4.gif)<br/>
 
 <br/>
-#### (5) NavBar, no TabBar
+#### (5) NavBar, TabBar
 ![image](./PhotoBrowser/Show/5.gif)<br/>
 
 <br/>
