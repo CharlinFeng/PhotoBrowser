@@ -1,7 +1,7 @@
 ![image](./PhotoBrowser/title.jpg)
 <br/><br/>
 ###[中文文档](https://github.com/nsdictionary/PhotoBrowser/blob/master/README_CH.md)
-###[个人微博](http://weibo.com/charlin2015/) 、[西成](http://ios-android.cn/)
+###[个人微博](http://weibo.com/charlin2015/) 、[西成事业求关注~](http://ios-android.cn/)
 <br/><br/>
 #### Begin
 <br/><br/><br/>
