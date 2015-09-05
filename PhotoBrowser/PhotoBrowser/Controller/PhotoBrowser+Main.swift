@@ -121,6 +121,7 @@ extension PhotoBrowser{
         zoomOutWithAnim(page)
         
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: CFPBShowKey)
+        NSNotificationCenter.defaultCenter().postNotificationName(PhotoBrowserDidDismissNoti, object: self)
     }
     
     
@@ -149,7 +150,6 @@ extension PhotoBrowser{
     }
     
     func show(inVC vc: UIViewController,index: Int){
-        
         assert(showType != nil, "Error: You Must Set showType!")
         assert(photoType != nil, "Error: You Must Set photoType!")
         assert(photoModels != nil, "Error: You Must Set DataModels!")
@@ -206,6 +206,9 @@ extension PhotoBrowser{
                 pagecontrol.currentPage = index
             }
         }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(PhotoBrowserDidShowNoti, object: self)
+    
     }
     
     

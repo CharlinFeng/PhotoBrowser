@@ -14,6 +14,8 @@ let CFPBThumbNailWH: CGFloat = 120
 
 let CFPBSingleTapNofi = "CFPBSingleTapNofi"
 let CFPBDismissBtnClickNoti = "CFPBDismissBtnClickNoti"
+let PhotoBrowserDidShowNoti = "PhotoBrowserDidShowNoti"
+let PhotoBrowserDidDismissNoti = "PhotoBrowserDidDismissNoti"
 let CFPBShowKey = "CFPBShowKey"
 let CFPBCacheKey = "CFPBCacheKey"
 
