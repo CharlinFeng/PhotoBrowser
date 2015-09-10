@@ -2,7 +2,7 @@
 <br/><br/>
 ###[English Document](https://github.com/nsdictionary/PhotoBrowser)
 <br/><br/><br/>
-照片浏览器终结者
+照片浏览器终结者（关注[信息公告牌](https://github.com/CharlinFeng/Show)）
 ===============
 <br/>
 .Swift 1.2<br/><br/>
@@ -10,8 +10,6 @@
 
 <br/>
 ####本框架包比较大，你最好现在先开始下载。不然你可能会等很久。
-##### Charlin Feng作为国内较早使用Swift开发框架和企业正式项目的开发者，诚开Swift专业群，欢迎加入纯Swift学习交流平台我们共进退：
-##### QQ群号: 467237044
 ##### 感谢charlin 3群 @Simn 提供的英文翻译帮助!
 
 <br/>
@@ -243,13 +241,9 @@ swift中的图片缓存框架Haneke目前不支持下载进度，所以没有图
 <br/><br/><br/>
 冯成林团队的事业，希望得到您的支持！
 ===============
-#####  我们创业啦，立足成都，放眼全中国企业市场！创业前期所有的历程都是那么的艰难痛苦，但我们无谓一切！面带着希望与微笑勇往直前！我们希望得到您的支持，就算仅仅是心灵上的！<br/>
-#####  创业艰难，我们没有天使投资人，我们自食其力！但我们相信光明就在布满荆棘的前方。<br/>
-#####  或者在不远的未来，一款由我们推出的自主产品APP会席卷整个互联网，那将是对我们5年默默付出最好的回报！<br/><br/>
-#### 西成软件：http://ios-android.cn<br/>
-
-<br/><br/>
-
+#### 支持时点软件发展（公司前期做全国APP外包），时点软件感激不尽！
+<br/>
+[![image](https://github.com/CharlinFeng/Resource/blob/master/ShiDian/shidian.png)](http://ios-android.cn)<br/><br/>
 
 
 
