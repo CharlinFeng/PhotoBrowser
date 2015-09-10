@@ -239,9 +239,9 @@ swift中的图片缓存框架Haneke目前不支持下载进度，所以没有图
 
 
 <br/><br/><br/>
-冯成林团队的事业，希望得到您的支持！
+时点软业，希望得到您的支持！
 ===============
-#### 支持时点软件发展（公司前期做全国APP外包），时点软件感激不尽！
+#### 支持时点软件发展（公司前期做全国APP外包），为时点提供业务资源与信息，我们感激不尽！
 <br/>
 [![image](https://github.com/CharlinFeng/Resource/blob/master/ShiDian/shidian.png)](http://ios-android.cn)<br/><br/>
 
