@@ -23,10 +23,10 @@ extension HanekeGlobals {
 
 public class DiskFetcher<T : DataConvertible> : Fetcher<T> {
     
-    let path : String
+    let path: String
     var cancelled = false
     
-    public init(path : String) {
+    public init(path: String) {
         self.path = path
         let key = path
         super.init(key: key)
@@ -34,7 +34,7 @@ public class DiskFetcher<T : DataConvertible> : Fetcher<T> {
     
     // MARK: Fetcher
     
-    public override func fetch(failure fail : ((NSError?) -> ()), success succeed : (T.Result) -> ()) {
+    public override func fetch(failure fail: ((NSError?) -> ()), success succeed: (T.Result) -> ()) {
         self.cancelled = false
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { [weak self] in
             if let strongSelf = self {
@@ -49,16 +49,17 @@ public class DiskFetcher<T : DataConvertible> : Fetcher<T> {
     
     // MARK: Private
     
-    private func privateFetch(failure fail : ((NSError?) -> ()), success succeed : (T.Result) -> ()) {
+    private func privateFetch(failure fail: ((NSError?) -> ()), success succeed: (T.Result) -> ()) {
         if self.cancelled {
             return
         }
         
-        var error: NSError?
-        let data = NSData(contentsOfFile: self.path, options: NSDataReadingOptions.allZeros, error: &error)
-        if data == nil {
+        let data : NSData
+        do {
+            data = try NSData(contentsOfFile: self.path, options: NSDataReadingOptions())
+        } catch {
             dispatch_async(dispatch_get_main_queue()) {
-                fail(error)
+                fail(error as NSError)
             }
             return
         }
@@ -67,9 +68,7 @@ public class DiskFetcher<T : DataConvertible> : Fetcher<T> {
             return
         }
         
-        let value : T.Result? = T.convertFromData(data!)
-        
-        if value == nil {
+        guard let value : T.Result = T.convertFromData(data) else {
             let localizedFormat = NSLocalizedString("Failed to convert value from data at path %@", comment: "Error description")
             let description = String(format:localizedFormat, self.path)
             let error = errorWithCode(HanekeGlobals.DiskFetcher.ErrorCode.InvalidData.rawValue, description: description)
@@ -83,7 +82,7 @@ public class DiskFetcher<T : DataConvertible> : Fetcher<T> {
             if self.cancelled {
                 return
             }
-            succeed(value!)
+            succeed(value)
         })
     }
 }

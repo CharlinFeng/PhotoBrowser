@@ -45,7 +45,7 @@ extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
         
         //添加
         self.view.addSubview(collectionView)
-        collectionView.make_4Insets(insets: UIEdgeInsetsMake(0, 0, 0, -CFPBExtraWidth))
+        collectionView.make_4Inset(UIEdgeInsetsMake(0, 0, 0, -CFPBExtraWidth))
 
         //注册cell
         collectionView.registerNib(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)

@@ -68,30 +68,39 @@ public class ConstraintMaker {
     #if os(iOS)
     
     /// firse baseline position
+    @available(iOS 8.0, *)
     public var firstBaseline: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.FirstBaseline) }
     
     /// left margin
+    @available(iOS 8.0, *)
     public var leftMargin: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.LeftMargin) }
     
     /// right margin
+    @available(iOS 8.0, *)
     public var rightMargin: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.RightMargin) }
     
     /// top margin
+    @available(iOS 8.0, *)
     public var topMargin: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.TopMargin) }
     
     /// bottom margin
+    @available(iOS 8.0, *)
     public var bottomMargin: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.BottomMargin) }
     
     /// leading margin
+    @available(iOS 8.0, *)
     public var leadingMargin: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.LeadingMargin) }
     
     /// trailing margin
+    @available(iOS 8.0, *)
     public var trailingMargin: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.TrailingMargin) }
     
     /// centerX within margins
+    @available(iOS 8.0, *)
     public var centerXWithinMargins: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.CenterXWithinMargins) }
     
     /// centerY within margins
+    @available(iOS 8.0, *)
     public var centerYWithinMargins: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.CenterYWithinMargins) }
     
     #endif
@@ -108,17 +117,23 @@ public class ConstraintMaker {
     #if os(iOS)
     
     // top + left + bottom + right margins
+    @available(iOS 8.0, *)
     public var margins: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.Margins) }
     
     // centerX + centerY within margins
+    @available(iOS 8.0, *)
     public var centerWithinMargins: ConstraintDescriptionExtendable { return self.makeConstraintDescription(ConstraintAttributes.CenterWithinMargins) }
     
     #endif
     
-    internal init(view: View) {
+    internal init(view: View, file: String, line: UInt) {
         self.view = view
+        self.file = file
+        self.line = line
     }
     
+    internal let file: String
+    internal let line: UInt
     internal let view: View
     internal var constraintDescriptions = [ConstraintDescription]()
     
@@ -129,60 +144,59 @@ public class ConstraintMaker {
         return constraintDescription
     }
     
-    internal class func prepareConstraints(view: View, @noescape closure: (make: ConstraintMaker) -> Void) -> [Constraint] {
-        let maker = ConstraintMaker(view: view)
+    internal class func prepareConstraints(view view: View, file: String = "Unknown", line: UInt = 0, @noescape closure: (make: ConstraintMaker) -> Void) -> [Constraint] {
+        let maker = ConstraintMaker(view: view, file: file, line: line)
         closure(make: maker)
         
-        return maker.constraintDescriptions.map { $0.constraint }
+        let constraints = maker.constraintDescriptions.map { $0.constraint }
+        for constraint in constraints {
+            constraint.makerFile = maker.file
+            constraint.makerLine = maker.line
+        }
+        return constraints
     }
     
-    internal class func makeConstraints(view: View, @noescape closure: (make: ConstraintMaker) -> Void) {
-        #if os(iOS)
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        #else
+    internal class func makeConstraints(view view: View, file: String = "Unknown", line: UInt = 0, @noescape closure: (make: ConstraintMaker) -> Void) {
         view.translatesAutoresizingMaskIntoConstraints = false
-        #endif
-        let maker = ConstraintMaker(view: view)
+        let maker = ConstraintMaker(view: view, file: file, line: line)
         closure(make: maker)
         
         let constraints = maker.constraintDescriptions.map { $0.constraint as! ConcreteConstraint }
         for constraint in constraints {
+            constraint.makerFile = maker.file
+            constraint.makerLine = maker.line
             constraint.installOnView(updateExisting: false)
         }
     }
     
-    internal class func remakeConstraints(view: View, @noescape closure: (make: ConstraintMaker) -> Void) {
-        #if os(iOS)
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        #else
+    internal class func remakeConstraints(view view: View, file: String = "Unknown", line: UInt = 0, @noescape closure: (make: ConstraintMaker) -> Void) {
         view.translatesAutoresizingMaskIntoConstraints = false
-        #endif
-        let maker = ConstraintMaker(view: view)
+        let maker = ConstraintMaker(view: view, file: file, line: line)
         closure(make: maker)
         
-        self.removeConstraints(view)
+        self.removeConstraints(view: view)
         let constraints = maker.constraintDescriptions.map { $0.constraint as! ConcreteConstraint }
         for constraint in constraints {
+            constraint.makerFile = maker.file
+            constraint.makerLine = maker.line
             constraint.installOnView(updateExisting: false)
         }
     }
     
-    internal class func updateConstraints(view: View, @noescape closure: (make: ConstraintMaker) -> Void) {
-        #if os(iOS)
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        #else
+    internal class func updateConstraints(view view: View, file: String = "Unknown", line: UInt = 0, @noescape closure: (make: ConstraintMaker) -> Void) {
         view.translatesAutoresizingMaskIntoConstraints = false
-        #endif
-        let maker = ConstraintMaker(view: view)
+        let maker = ConstraintMaker(view: view, file: file, line: line)
         closure(make: maker)
         
         let constraints = maker.constraintDescriptions.map { $0.constraint as! ConcreteConstraint}
         for constraint in constraints {
+            constraint.makerFile = maker.file
+            constraint.makerLine = maker.line
             constraint.installOnView(updateExisting: true)
         }
     }
     
-    internal class func removeConstraints(view: View) {
+    internal class func removeConstraints(view view: View) {
         for existingLayoutConstraint in view.snp_installedLayoutConstraints {
             existingLayoutConstraint.snp_constraint?.uninstall()
         }

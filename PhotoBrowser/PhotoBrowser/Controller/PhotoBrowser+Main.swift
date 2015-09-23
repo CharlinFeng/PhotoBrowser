@@ -50,7 +50,7 @@ extension PhotoBrowser{
     /** 保存 */
     func saveAction(){
         
-        if contains(photoArchiverArr, page) {showHUD("已经保存", autoDismiss: 2); return}
+        if photoArchiverArr.contains(page) {showHUD("已经保存", autoDismiss: 2); return}
         
         let itemCell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: page, inSection: 0)) as! ItemCell
         
@@ -59,21 +59,18 @@ extension PhotoBrowser{
         if !itemCell.hasHDImage {showHUD("图片未下载", autoDismiss: 2); return}
         
         showHUD("保存中", autoDismiss: -1)
-        
-        //当前模型
-        let savePhotoModel = photoModels[page]
-
-        UIImageWriteToSavedPhotosAlbum(itemCell.imageV.image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
+    
+        UIImageWriteToSavedPhotosAlbum(itemCell.imageV.image!, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
         
         self.view.userInteractionEnabled = false
     }
 
     /** come on */
     func image(image: UIImage, didFinishSavingWithError: NSError, contextInfo:UnsafePointer<Void>){
-        
+     
         self.view.userInteractionEnabled = true
         
-        if let error = didFinishSavingWithError as NSError? {
+        if (didFinishSavingWithError as NSError?) == nil {
             showHUD("保存失败", autoDismiss: 2)
         }
         else{
@@ -115,7 +112,7 @@ extension PhotoBrowser{
         if vc.navigationController != nil {vc.navigationController?.navigationBarHidden = isNavBarHidden}
         if vc.tabBarController != nil {vc.tabBarController?.tabBar.hidden = isTabBarHidden}
         
-        if showType == .Push || showType == .Modal {return}
+        if showType == ShowType.Push || showType == ShowType.Modal {return}
         
         /** 关闭动画 */
         zoomOutWithAnim(page)
@@ -190,11 +187,9 @@ extension PhotoBrowser{
             vc.view.addSubview(self.view)
             
             //添加约束
-            self.view.make_4Insets(insets: UIEdgeInsetsZero)
+            self.view.make_4Inset(UIEdgeInsetsZero)
             
             vc.addChildViewController(self)
-            
-            let showPhotoModel = photoModels[index]
             
             /** 展示动画 */
             zoomInWithAnim(index)

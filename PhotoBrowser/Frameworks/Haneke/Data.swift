@@ -24,7 +24,7 @@ extension UIImage : DataConvertible, DataRepresentable {
     
     public typealias Result = UIImage
     
-    public class func convertFromData(data:NSData) -> Result? {
+    public class func convertFromData(data: NSData) -> Result? {
         let image = UIImage(data: data)
         return image
     }
@@ -39,8 +39,8 @@ extension String : DataConvertible, DataRepresentable {
     
     public typealias Result = String
     
-    public static func convertFromData(data:NSData) -> Result? {
-        var string = NSString(data: data, encoding: NSUTF8StringEncoding)
+    public static func convertFromData(data: NSData) -> Result? {
+        let string = NSString(data: data, encoding: NSUTF8StringEncoding)
         return string as? Result
     }
     
@@ -54,7 +54,7 @@ extension NSData : DataConvertible, DataRepresentable {
     
     public typealias Result = NSData
     
-    public class func convertFromData(data:NSData) -> Result? {
+    public class func convertFromData(data: NSData) -> Result? {
         return data
     }
     
@@ -70,9 +70,9 @@ public enum JSON : DataConvertible, DataRepresentable {
     case Dictionary([String:AnyObject])
     case Array([AnyObject])
     
-    public static func convertFromData(data:NSData) -> Result? {
-        var error : NSError?
-        if let object : AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) {
+    public static func convertFromData(data: NSData) -> Result? {
+        do {
+            let object : AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions())
             switch (object) {
             case let dictionary as [String:AnyObject]:
                 return JSON.Dictionary(dictionary)
@@ -81,8 +81,8 @@ public enum JSON : DataConvertible, DataRepresentable {
             default:
                 return nil
             }
-        } else {
-            Log.error("Invalid JSON data", error)
+        } catch {
+            Log.error("Invalid JSON data", error as NSError)
             return nil
         }
     }
@@ -90,15 +90,15 @@ public enum JSON : DataConvertible, DataRepresentable {
     public func asData() -> NSData! {
         switch (self) {
         case .Dictionary(let dictionary):
-            return NSJSONSerialization.dataWithJSONObject(dictionary, options: NSJSONWritingOptions.allZeros, error: nil)
+            return try? NSJSONSerialization.dataWithJSONObject(dictionary, options: NSJSONWritingOptions())
         case .Array(let array):
-            return NSJSONSerialization.dataWithJSONObject(array, options: NSJSONWritingOptions.allZeros, error: nil)
+            return try? NSJSONSerialization.dataWithJSONObject(array, options: NSJSONWritingOptions())
         }
     }
     
     public var array : [AnyObject]! {
         switch (self) {
-        case .Dictionary(let _):
+        case .Dictionary(_):
             return nil
         case .Array(let array):
             return array
@@ -109,7 +109,7 @@ public enum JSON : DataConvertible, DataRepresentable {
         switch (self) {
         case .Dictionary(let dictionary):
             return dictionary
-        case .Array(let _):
+        case .Array(_):
             return nil
         }
     }

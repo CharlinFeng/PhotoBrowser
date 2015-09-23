@@ -51,26 +51,24 @@ extension DisplayView{
         super.layoutSubviews()
         
         let totalRow = 3
-        let totalCol = 3
         let totalWidth = self.bounds.size.width
-        let totalHeight = self.bounds.size.height
         
         let margin: CGFloat = 10
         let itemWH = (totalWidth - margin * CGFloat(totalRow + 1)) / CGFloat(totalRow)
         
         /** 数组遍历 */
-        for (i: Int, obj: AnyObject) in enumerate(self.subviews){
-            
+        var i=0
+        
+        for view in self.subviews{
+
             let row = i / totalRow
             let col = i % totalRow
             
             let x = (CGFloat(col) + 1) * margin + CGFloat(col) * itemWH
             let y = (CGFloat(row) + 1) * margin + CGFloat(row) * itemWH
-            
-            
-            let view = obj as! UIView
             let frame = CGRectMake(x, y, itemWH, itemWH)
             view.frame = frame
+            i++
         }
     }
 }

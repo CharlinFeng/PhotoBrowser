@@ -70,30 +70,39 @@ public extension View {
     #if os(iOS)
     
     /// first baseline position
+    @available(iOS 8.0, *)
     public var snp_firstBaseline: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.FirstBaseline) }
     
     /// left margin
+    @available(iOS 8.0, *)
     public var snp_leftMargin: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.LeftMargin) }
     
     /// right margin
+    @available(iOS 8.0, *)
     public var snp_rightMargin: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.RightMargin) }
     
     /// top margin
+    @available(iOS 8.0, *)
     public var snp_topMargin: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.TopMargin) }
     
     /// bottom margin
+    @available(iOS 8.0, *)
     public var snp_bottomMargin: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.BottomMargin) }
     
     /// leading margin
+    @available(iOS 8.0, *)
     public var snp_leadingMargin: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.LeadingMargin) }
     
     /// trailing margin
+    @available(iOS 8.0, *)
     public var snp_trailingMargin: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.TrailingMargin) }
     
     /// centerX within margins
+    @available(iOS 8.0, *)
     public var snp_centerXWithinMargins: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.CenterXWithinMargins) }
     
     /// centerY within margins
+    @available(iOS 8.0, *)
     public var snp_centerYWithinMargins: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.CenterYWithinMargins) }
     
     #endif
@@ -110,9 +119,11 @@ public extension View {
     #if os(iOS)
     
     // top + left + bottom + right margins
+    @available(iOS 8.0, *)
     public var snp_margins: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.Margins) }
     
     // centerX + centerY within margins
+    @available(iOS 8.0, *)
     public var snp_centerWithinMargins: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.CenterWithinMargins) }
     
     #endif
@@ -124,8 +135,8 @@ public extension View {
         
         :returns: the constraints made
     */
-    public func snp_prepareConstraints(@noescape closure: (make: ConstraintMaker) -> Void) -> [Constraint] {
-        return ConstraintMaker.prepareConstraints(self, closure: closure)
+    public func snp_prepareConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> [Constraint] {
+        return ConstraintMaker.prepareConstraints(view: self, file: file, line: line, closure: closure)
     }
     
     /**
@@ -133,8 +144,8 @@ public extension View {
         
         :param: closure that will be passed the `ConstraintMaker` to make the constraints with
     */
-    public func snp_makeConstraints(@noescape closure: (make: ConstraintMaker) -> Void) -> Void {
-        ConstraintMaker.makeConstraints(self, closure: closure)
+    public func snp_makeConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
+        ConstraintMaker.makeConstraints(view: self, file: file, line: line, closure: closure)
     }
     
     /**
@@ -144,8 +155,8 @@ public extension View {
     
         :param: closure that will be passed the `ConstraintMaker` to update the constraints with
     */
-    public func snp_updateConstraints(@noescape closure: (make: ConstraintMaker) -> Void) -> Void {
-        ConstraintMaker.updateConstraints(self, closure: closure)
+    public func snp_updateConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
+        ConstraintMaker.updateConstraints(view: self, file: file, line: line, closure: closure)
     }
     
     /**
@@ -153,15 +164,15 @@ public extension View {
     
         :param: closure that will be passed the `ConstraintMaker` to remake the constraints with
     */
-    public func snp_remakeConstraints(@noescape closure: (make: ConstraintMaker) -> Void) -> Void {
-        ConstraintMaker.remakeConstraints(self, closure: closure)
+    public func snp_remakeConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
+        ConstraintMaker.remakeConstraints(view: self, file: file, line: line, closure: closure)
     }
     
     /**
         Removes all previously made constraints.
     */
     public func snp_removeConstraints() {
-        ConstraintMaker.removeConstraints(self)
+        ConstraintMaker.removeConstraints(view: self)
     }
     
     internal var snp_installedLayoutConstraints: [LayoutConstraint] {
@@ -172,7 +183,7 @@ public extension View {
             return []
         }
         set {
-            objc_setAssociatedObject(self, &installedLayoutConstraintsKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            objc_setAssociatedObject(self, &installedLayoutConstraintsKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

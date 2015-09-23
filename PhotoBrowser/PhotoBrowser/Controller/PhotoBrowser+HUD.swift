@@ -22,8 +22,7 @@ extension PhotoBrowser{
         hud.text = text
         
         self.view.addSubview(hud)
-        let margin = self.view.bounds.size.width * 0.3
-        hud.make_center(CGPointZero, width: 120, height: 44)
+        hud.make_center(offsest: CGPointZero, width: 120, height: 44)
         
         if autoDismiss == -1 {return}
         

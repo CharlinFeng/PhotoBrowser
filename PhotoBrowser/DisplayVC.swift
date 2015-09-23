@@ -61,7 +61,7 @@ extension DisplayVC{
         
         let wh = min(UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
         
-        displayView.make_center(CGPointZero, width: wh, height: wh)
+        displayView.make_center(offsest: CGPointZero, width: wh, height: wh)
         
         
         displayView.tapedImageV = {[unowned self] index in

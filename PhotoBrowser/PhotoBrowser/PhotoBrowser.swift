@@ -41,7 +41,7 @@ class PhotoBrowser: UIViewController {
     
     lazy var photoArchiverArr: [Int] = []
 
-    deinit{NSNotificationCenter.defaultCenter().removeObserver(self);println("deinit")}
+    deinit{NSNotificationCenter.defaultCenter().removeObserver(self);print("deinit")}
     
     lazy var hud: UILabel = {
         

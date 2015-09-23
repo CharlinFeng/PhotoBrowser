@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ys6-jj-0NR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ys6-jj-0NR">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -26,7 +26,7 @@
         <!--中国·成都冯成林原创-->
         <scene sceneID="khK-kV-RGP">
             <objects>
-                <viewController id="a3G-dt-4iG" customClass="LangVC" customModule="PhotoBroswer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="a3G-dt-4iG" customClass="LangVC" customModule="PhotoBrowser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F1S-mz-T8M"/>
                         <viewControllerLayoutGuide type="bottom" id="gjP-FB-7DC"/>
@@ -45,8 +45,8 @@
                                 <color key="textColor" red="0.27450980390000002" green="0.70588235290000001" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StH-39-ZrP">
-                                <rect key="frame" x="20" y="372" width="280" height="159"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StH-39-ZrP">
+                                <rect key="frame" x="0.0" y="367" width="290" height="164"/>
                                 <color key="backgroundColor" red="0.5" green="0.5" blue="0.72782175159999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="StH-39-ZrP" secondAttribute="height" multiplier="260:147" id="7V2-B7-gtf"/>
@@ -60,8 +60,8 @@
                                     <action selector="btnClick:" destination="a3G-dt-4iG" eventType="touchUpInside" id="SvO-EL-heX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-03-rpf">
-                                <rect key="frame" x="320" y="372" width="280" height="159"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-03-rpf">
+                                <rect key="frame" x="310" y="367" width="290" height="164"/>
                                 <color key="backgroundColor" red="1" green="0.52549019607843139" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="中文版本">

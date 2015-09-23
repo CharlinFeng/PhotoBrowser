@@ -34,9 +34,6 @@ extension PhotoBrowser{
             
         }else{
             
-            /** 服务器图片模式 */
-            let url = NSURL(string: photoModel.hostHDImgURL)!
-            
             let cache = Cache<UIImage>(name: CFPBCacheKey)
             
             cache.fetch(key:  photoModel.hostHDImgURL).onSuccess {[unowned self] image in
