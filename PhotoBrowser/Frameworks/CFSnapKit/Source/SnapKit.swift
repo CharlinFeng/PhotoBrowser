@@ -21,25 +21,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
+public typealias InterfaceLayoutDirection = UIUserInterfaceLayoutDirection
+public typealias LayoutSupport = UILayoutSupport
+#else
+import AppKit
+public typealias InterfaceLayoutDirection = NSUserInterfaceLayoutDirection
+public class LayoutSupport {}
+#endif
 
 /**
-    Used to expose public API on view controllers
+    Used to configure different parts of SnapKit
 */
-public extension UIViewController {
+public struct Config {
     
-    /// top layout guide top
-    public var snp_topLayoutGuideTop: ConstraintItem { return ConstraintItem(object: self.topLayoutGuide, attributes: ConstraintAttributes.Top) }
-    
-    /// top layout guide bottom
-    public var snp_topLayoutGuideBottom: ConstraintItem { return ConstraintItem(object: self.topLayoutGuide, attributes: ConstraintAttributes.Bottom) }
-    
-    /// bottom layout guide top
-    public var snp_bottomLayoutGuideTop: ConstraintItem { return ConstraintItem(object: self.bottomLayoutGuide, attributes: ConstraintAttributes.Top) }
-    
-    /// bottom layout guide bottom
-    public var snp_bottomLayoutGuideBottom: ConstraintItem { return ConstraintItem(object: self.bottomLayoutGuide, attributes: ConstraintAttributes.Bottom) }
+    /// The interface layout direction
+    public static var interfaceLayoutDirection = InterfaceLayoutDirection.LeftToRight
     
 }
-#endif

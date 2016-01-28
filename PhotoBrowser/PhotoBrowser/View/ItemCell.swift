@@ -40,7 +40,15 @@ class ItemCell: UICollectionViewCell {
     
     @IBOutlet weak var imgVWC: NSLayoutConstraint!
     
-    @IBOutlet weak var layoutView: UIView!
+    @IBOutlet weak var imgVTMC: NSLayoutConstraint!
+    
+    @IBOutlet weak var imgVLMC: NSLayoutConstraint!
+    
+    
+    
+    
+    
+//    @IBOutlet weak var layoutView: UIView!
     
     @IBOutlet weak var asHUD: NVActivityIndicatorView!
     
@@ -52,19 +60,12 @@ class ItemCell: UICollectionViewCell {
     
     var isAlive: Bool = true
     
-    lazy private var doubleTapGesture: UITapGestureRecognizer = {
-        
-        let doubleTapGesture = UITapGestureRecognizer(target: self, action: "doubleTap:")
-        doubleTapGesture.numberOfTapsRequired = 2
-        return doubleTapGesture
-    }()
+    private var doubleTapGesture: UITapGestureRecognizer!
     
-    lazy private var singleTapGesture: UITapGestureRecognizer = {
-        
-        let singleTapGesture = UITapGestureRecognizer(target: self, action: "singleTap:")
-        singleTapGesture.numberOfTapsRequired = 1
-        return singleTapGesture
-    }()
+    private var singleTapGesture: UITapGestureRecognizer!
+    
+    lazy var screenH: CGFloat = UIScreen.mainScreen().bounds.size.height
+    lazy var screenW: CGFloat = UIScreen.mainScreen().bounds.size.width
     
     deinit{
         
@@ -79,10 +80,18 @@ extension ItemCell: UIScrollViewDelegate{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        singleTapGesture.requireGestureRecognizerToFail(doubleTapGesture)
         
-        self.addGestureRecognizer(doubleTapGesture)
-        self.addGestureRecognizer(singleTapGesture)
+        doubleTapGesture = UITapGestureRecognizer(target: self, action: "doubleTap:")
+        doubleTapGesture.numberOfTapsRequired = 2
+        doubleTapGesture.numberOfTouchesRequired = 1
+        
+        singleTapGesture = UITapGestureRecognizer(target: self, action: "singleTap:")
+        singleTapGesture.requireGestureRecognizerToFail(self.doubleTapGesture)
+        singleTapGesture.numberOfTapsRequired = 1
+        singleTapGesture.numberOfTouchesRequired = 1
+        addGestureRecognizer(doubleTapGesture)
+        addGestureRecognizer(singleTapGesture)
+        
         scrollView.delegate = self
         
         msgContentTextView.textContainerInset = UIEdgeInsetsZero
@@ -91,9 +100,22 @@ extension ItemCell: UIScrollViewDelegate{
         
         //HUD初始化
         asHUD.layer.cornerRadius = 40
-        
+//        scrollView.layer.borderColor = UIColor.redColor().CGColor
+//        scrollView.layer.borderWidth = 5
         asHUD.type = NVActivityIndicatorType.BallTrianglePath
+        
+        //更新约束:默认居中
+        self.imgVLMC.constant = (self.screenW - 120)/2
+        self.imgVTMC.constant = (self.screenH - 120)/2
     }
+    
+    override func layoutSubviews() {
+        
+        super.layoutSubviews()
+        
+    }
+    
+    
     
     func didRotate(){
 
@@ -117,11 +139,31 @@ extension ItemCell: UIScrollViewDelegate{
             let location = tapG.locationInView(tapG.view)
             
             let rect = CGRectMake(location.x, location.y, 10, 10)
+
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: 7)!)
+                self.scrollView.zoomToRect(rect, animated: false)
+                var c = (self.screenH - self.imageV.frame.height) / 2
+                if c <= 0 {c = 0}
+                self.imgVTMC.constant = c
+                print(self.imgVTMC.constant)
+                self.imageV.setNeedsLayout()
+                self.imageV.layoutIfNeeded()
+                
+            })
             
-            scrollView.zoomToRect(rect, animated: true)
         }else{
-            scrollView.setZoomScale(1, animated: true)
+            
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: 7)!)
+                self.scrollView.setZoomScale(1, animated: false)
+                self.imgVTMC.constant = (self.screenH - self.imageV.showSize.height) / 2
+                self.imageV.setNeedsLayout()
+                self.imageV.layoutIfNeeded()
+            })
         }
+        
+        
     }
     
     func singleTap(tapG: UITapGestureRecognizer){
@@ -129,10 +171,20 @@ extension ItemCell: UIScrollViewDelegate{
         NSNotificationCenter.defaultCenter().postNotificationName(CFPBSingleTapNofi, object: nil)
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {return layoutView}
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {return imageV}
 
+    func scrollViewDidZoom(scrollView: UIScrollView) {
+//        UIView.animateWithDuration(0.3, animations: { () -> Void in
+//            UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: 7)!)
+            var c = (self.screenH - self.imageV.frame.height) / 2
+            if c <= 0 {c = 0}
+            self.imgVTMC.constant = c
+//            print(self.imgVTMC.constant)
+//            self.imageV.setNeedsLayout()
+//            self.imageV.layoutIfNeeded()
+//        })
+    }
 
-    
     
     /**  复位  */
     func reset(){
@@ -170,13 +222,18 @@ extension ItemCell: UIScrollViewDelegate{
             if format == nil{format = Format(name: photoModel.hostHDImgURL, diskCapacity: 10 * 1024 * 1024, transform: { img in
                 return img
             })}
-            
+
             cache.fetch(key: photoModel.hostHDImgURL,  failure: {[unowned self] fail in
                 
                 if !self.isAlive {return}
                 
                 self.showAsHUD()
-                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    //更新约束:默认居中
+                    self.imgVLMC.constant = (self.screenW - 120)/2
+                    self.imgVTMC.constant = (self.screenH - 120)/2
+                })
                 self.imageV.image = self.photoModel.hostThumbnailImg
                 
                 self.cache.fetch(URL: NSURL(string: self.photoModel.hostHDImgURL)!, failure: {fail in
@@ -248,7 +305,7 @@ extension ItemCell: UIScrollViewDelegate{
     
     /** 图片数据已经装载 */
     func imageIsLoaded(img: UIImage,needAnim: Bool){
-        
+        self.scrollView.setZoomScale(1, animated: true)
         if !hasHDImage {return}
         
         if vc == nil{return}
@@ -272,15 +329,18 @@ extension ItemCell: UIScrollViewDelegate{
 
         let showSize = CGSize.decisionShowSize(imgSize, contentSize: contentSize)
     
+        imageV.showSize = showSize
+        
         dispatch_async(dispatch_get_main_queue(), {[unowned self] () -> Void in
             
             self.imgVHC.constant = showSize.height
             self.imgVWC.constant = showSize.width
-            
+            self.imgVLMC.constant = 0
+            self.imgVTMC.constant = (self.screenH - showSize.height) / 2
             if self.photoModel.isLocal! {return}
-            
+  
             if !needAnim{return}
-            
+            self.scrollView.contentSize = showSize
             UIView.animateWithDuration(0.25, animations: {[unowned self] () -> Void in
                 UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
                 self.imageV.setNeedsLayout()

@@ -21,43 +21,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
-#else
-import AppKit
-#endif
 
 /**
-    Used to add extra information to the actual `NSLayoutConstraint`'s that will UIKit/AppKit will utilize
+    Used to expose public API on view controllers
 */
-public class LayoutConstraint: NSLayoutConstraint {
+public extension UIViewController {
     
-    internal var snp_constraint: Constraint? = nil
+    /// top layout guide top
+    public var snp_topLayoutGuideTop: ConstraintItem { return ConstraintItem(object: self.topLayoutGuide, attributes: ConstraintAttributes.Top) }
+    
+    /// top layout guide bottom
+    public var snp_topLayoutGuideBottom: ConstraintItem { return ConstraintItem(object: self.topLayoutGuide, attributes: ConstraintAttributes.Bottom) }
+    
+    /// bottom layout guide top
+    public var snp_bottomLayoutGuideTop: ConstraintItem { return ConstraintItem(object: self.bottomLayoutGuide, attributes: ConstraintAttributes.Top) }
+    
+    /// bottom layout guide bottom
+    public var snp_bottomLayoutGuideBottom: ConstraintItem { return ConstraintItem(object: self.bottomLayoutGuide, attributes: ConstraintAttributes.Bottom) }
     
 }
-
-internal func ==(left: LayoutConstraint, right: LayoutConstraint) -> Bool {
-    if left.firstItem !== right.firstItem {
-        return false
-    }
-    if left.secondItem !== right.secondItem {
-        return false
-    }
-    if left.firstAttribute != right.firstAttribute {
-        return false
-    }
-    if left.secondAttribute != right.secondAttribute {
-        return false
-    }
-    if left.relation != right.relation {
-        return false
-    }
-    if left.priority != right.priority {
-        return false
-    }
-    if left.multiplier != right.multiplier {
-        return false
-    }
-    return true
-}
-
+#endif

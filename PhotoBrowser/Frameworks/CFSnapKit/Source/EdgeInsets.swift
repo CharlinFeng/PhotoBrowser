@@ -21,28 +21,18 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
+public typealias EdgeInsets = UIEdgeInsets
+public func EdgeInsetsMake(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) -> EdgeInsets {
+    return EdgeInsets(top: top, left: left, bottom: bottom, right: right)
+}
+public let EdgeInsetsZero = EdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 #else
 import AppKit
-#endif
-
-/**
-    Used to define `NSLayoutRelation`
-*/
-internal enum ConstraintRelation: Int {
-    case Equal = 1, LessThanOrEqualTo, GreaterThanOrEqualTo
-    
-    internal var layoutRelation: NSLayoutRelation {
-        get {
-            switch(self) {
-            case .LessThanOrEqualTo:
-                return .LessThanOrEqual
-            case .GreaterThanOrEqualTo:
-                return .GreaterThanOrEqual
-            default:
-                return .Equal
-            }
-        }
-    }
+public typealias EdgeInsets = NSEdgeInsets
+public func EdgeInsetsMake(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) -> EdgeInsets {
+    return EdgeInsets(top: top, left: left, bottom: bottom, right: right)
 }
+public let EdgeInsetsZero = EdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+#endif

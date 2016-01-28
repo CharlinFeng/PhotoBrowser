@@ -21,51 +21,46 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
 #else
 import AppKit
 #endif
 
 /**
-    Used to assist in building a constraint
+    Used to add extra information to the actual `NSLayoutConstraint`'s that will UIKit/AppKit will utilize
 */
-public class ConstraintItem {
+public class LayoutConstraint: NSLayoutConstraint {
     
-    internal init(object: AnyObject?, attributes: ConstraintAttributes) {
-        self.object = object
-        self.attributes = attributes
+    internal var snp_constraint: Constraint? = nil
+    
+    public var snp_location: SourceLocation? {
+        return snp_constraint?.location
     }
-    
-    internal weak var object: AnyObject?
-    internal var attributes: ConstraintAttributes
-    
-    internal var view: View? {
-        return self.object as? View
-    }
-    
-    #if os(iOS)
-    
-    internal var layoutSupport: UILayoutSupport? {
-        return self.object as? UILayoutSupport
-    }
-    
-    #endif
 }
 
-
-internal func ==(left: ConstraintItem, right: ConstraintItem) -> Bool {
-    if left.object == nil {
+internal func ==(left: LayoutConstraint, right: LayoutConstraint) -> Bool {
+    if left.firstItem !== right.firstItem {
         return false
     }
-    if right.object == nil {
+    if left.secondItem !== right.secondItem {
         return false
     }
-    if left.object !== right.object {
+    if left.firstAttribute != right.firstAttribute {
         return false
     }
-    if left.attributes != right.attributes {
+    if left.secondAttribute != right.secondAttribute {
+        return false
+    }
+    if left.relation != right.relation {
+        return false
+    }
+    if left.priority != right.priority {
+        return false
+    }
+    if left.multiplier != right.multiplier {
         return false
     }
     return true
 }
+

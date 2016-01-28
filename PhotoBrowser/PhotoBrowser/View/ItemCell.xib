@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C2055" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A4310" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -21,40 +21,22 @@
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="2cW-mx-tjF">
                         <rect key="frame" x="0.0" y="0.0" width="311" height="544"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXA-hl-als">
-                                <rect key="frame" x="0.0" y="0.0" width="311" height="544"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bpy-dz-JVG" customClass="ShowImageView" customModule="PhotoBrowser" customModuleProvider="target">
-                                        <rect key="frame" x="96" y="212" width="120" height="120"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="QYF-rs-CaD"/>
-                                            <constraint firstAttribute="width" constant="120" id="nmD-aW-0di"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bpy-dz-JVG" customClass="ShowImageView" customModule="PhotoBrowser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="Bpy-dz-JVG" secondAttribute="centerY" id="RUT-M5-Yp7"/>
-                                    <constraint firstAttribute="centerX" secondItem="Bpy-dz-JVG" secondAttribute="centerX" id="W9K-2c-IYr"/>
+                                    <constraint firstAttribute="height" constant="120" id="QYF-rs-CaD"/>
+                                    <constraint firstAttribute="width" constant="120" id="nmD-aW-0di"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="331" id="9Qb-Fq-xXj"/>
-                            <constraint firstItem="vXA-hl-als" firstAttribute="top" secondItem="2cW-mx-tjF" secondAttribute="top" id="DBw-dH-hWW"/>
-                            <constraint firstAttribute="height" constant="544" id="VHN-eG-WqZ"/>
-                            <constraint firstAttribute="trailing" secondItem="vXA-hl-als" secondAttribute="trailing" id="ZNp-rq-eAH"/>
-                            <constraint firstAttribute="bottom" secondItem="vXA-hl-als" secondAttribute="bottom" id="h8W-qf-LdW"/>
-                            <constraint firstItem="vXA-hl-als" firstAttribute="leading" secondItem="2cW-mx-tjF" secondAttribute="leading" id="l0V-U5-gO9"/>
+                            <constraint firstAttribute="trailing" secondItem="Bpy-dz-JVG" secondAttribute="trailing" id="96b-CD-j9k"/>
+                            <constraint firstItem="Bpy-dz-JVG" firstAttribute="leading" secondItem="2cW-mx-tjF" secondAttribute="leading" id="CKx-fd-YMa"/>
+                            <constraint firstItem="Bpy-dz-JVG" firstAttribute="top" secondItem="2cW-mx-tjF" secondAttribute="top" id="Gpc-kI-RlP"/>
+                            <constraint firstAttribute="bottom" secondItem="Bpy-dz-JVG" secondAttribute="bottom" id="R81-yP-swC"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="9Qb-Fq-xXj"/>
-                                <exclude reference="VHN-eG-WqZ"/>
-                            </mask>
-                        </variation>
                     </scrollView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLB-3h-dGe" userLabel="BottomContentView">
                         <rect key="frame" x="0.0" y="424" width="311" height="120"/>
@@ -136,9 +118,7 @@
                 <constraint firstAttribute="bottom" secondItem="WLB-3h-dGe" secondAttribute="bottom" id="Vu1-Es-iOw"/>
                 <constraint firstAttribute="bottom" secondItem="2cW-mx-tjF" secondAttribute="bottom" id="XTT-Vp-mOK"/>
                 <constraint firstAttribute="trailing" secondItem="WLB-3h-dGe" secondAttribute="trailing" constant="20" id="Xlv-uo-FbF"/>
-                <constraint firstItem="ZdW-tE-Iln" firstAttribute="width" secondItem="vXA-hl-als" secondAttribute="width" id="acx-Uh-G1Q"/>
                 <constraint firstItem="ZdW-tE-Iln" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="faE-Hs-yyC"/>
-                <constraint firstItem="ZdW-tE-Iln" firstAttribute="height" secondItem="vXA-hl-als" secondAttribute="height" id="iQj-m1-MR1"/>
                 <constraint firstAttribute="bottom" secondItem="ZdW-tE-Iln" secondAttribute="bottom" id="iVE-lJ-0dO"/>
                 <constraint firstAttribute="centerY" secondItem="EJM-9T-tZj" secondAttribute="centerY" id="uAQ-Lu-sVJ"/>
             </constraints>
@@ -149,13 +129,14 @@
                 <outlet property="countLabel" destination="D7L-xv-wLU" id="JvK-eD-nZO"/>
                 <outlet property="imageV" destination="Bpy-dz-JVG" id="nob-Kr-eVJ"/>
                 <outlet property="imgVHC" destination="QYF-rs-CaD" id="JGv-rS-p8n"/>
+                <outlet property="imgVLMC" destination="CKx-fd-YMa" id="D25-Ji-vWI"/>
+                <outlet property="imgVTMC" destination="Gpc-kI-RlP" id="lgh-xT-FdN"/>
                 <outlet property="imgVWC" destination="nmD-aW-0di" id="a5R-md-Dsz"/>
-                <outlet property="layoutView" destination="vXA-hl-als" id="Str-Dm-a2K"/>
                 <outlet property="msgContentTextView" destination="pT9-Kd-MVz" id="l4U-ou-Nql"/>
                 <outlet property="msgTitleLabel" destination="wQC-PL-rio" id="2fF-1L-gZZ"/>
                 <outlet property="scrollView" destination="2cW-mx-tjF" id="osy-es-Pfh"/>
             </connections>
-            <point key="canvasLocation" x="-1583.5" y="178"/>
+            <point key="canvasLocation" x="-1468.5" y="179"/>
         </collectionViewCell>
     </objects>
 </document>

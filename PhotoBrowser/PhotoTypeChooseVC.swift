@@ -31,6 +31,7 @@ class PhotoTypeChooseVC: UIViewController {
 extension PhotoTypeChooseVC{
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         if langType == LangType.Chinese {return}

@@ -41,6 +41,8 @@ extension CGSize{
         
         if heightRatio <= 1 && widthRatio > 1 {return imgSize.ratioSize(widthRatio)}
         
+        if heightRatio <= 1 && widthRatio <= 1 {return imgSize.ratioSize(max(heightRatio, widthRatio))}
+        
         return imgSize
     }
 }

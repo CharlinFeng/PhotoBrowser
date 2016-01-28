@@ -38,6 +38,7 @@ public enum NVActivityIndicatorType {
     case Pacman
     case BallGridBeat
     case SemiCircleSpin
+    case BallRotateChase
     
     private func animation() -> NVActivityIndicatorAnimationDelegate {
         switch self {
@@ -99,6 +100,8 @@ public enum NVActivityIndicatorType {
             return NVActivityIndicatorAnimationBallGridBeat()
         case .SemiCircleSpin:
             return NVActivityIndicatorAnimationSemiCircleSpin()
+        case .BallRotateChase:
+            return NVActivityIndicatorAnimationBallRotateChase()
         }
     }
 }
@@ -109,11 +112,11 @@ public class NVActivityIndicatorView: UIView {
     private static let DEFAULT_SIZE: CGSize = CGSize(width: 40, height: 40)
     
     public var type: NVActivityIndicatorType
-    private var color: UIColor
-    private var size: CGSize
+    public var color: UIColor
+    public var nvSize: CGSize
     
-    var animating: Bool = false
-    var hidesWhenStopped: Bool = true
+    public var animating: Bool = false
+    public var hidesWhenStopped: Bool = true
     
     /**
         Create a activity indicator view with default type, color and size
@@ -130,8 +133,9 @@ public class NVActivityIndicatorView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         self.type = NVActivityIndicatorView.DEFAULT_TYPE
         self.color = NVActivityIndicatorView.DEFAULT_COLOR
-        self.size = NVActivityIndicatorView.DEFAULT_SIZE
+        self.nvSize = NVActivityIndicatorView.DEFAULT_SIZE
         super.init(coder: aDecoder);
+        super.backgroundColor = UIColor.clearColor()
     }
     
     /**
@@ -147,7 +151,7 @@ public class NVActivityIndicatorView: UIView {
     public init(frame: CGRect, type: NVActivityIndicatorType = DEFAULT_TYPE, color: UIColor = DEFAULT_COLOR, size: CGSize = DEFAULT_SIZE) {
         self.type = type
         self.color = color
-        self.size = size
+        self.nvSize = size
         super.init(frame: frame)
     }
     
@@ -182,6 +186,6 @@ public class NVActivityIndicatorView: UIView {
         let animation: protocol<NVActivityIndicatorAnimationDelegate> = self.type.animation()
         
         self.layer.sublayers = nil
-        animation.setUpAnimationInLayer(self.layer, size: self.size, color: self.color)
+        animation.setUpAnimationInLayer(self.layer, size: self.nvSize, color: self.color)
     }
 }

@@ -21,20 +21,48 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
-public typealias InterfaceLayoutDirection = UIUserInterfaceLayoutDirection
 #else
 import AppKit
-public typealias InterfaceLayoutDirection = NSUserInterfaceLayoutDirection
 #endif
 
 /**
-    Used to configure different parts of SnapKit
+    Used to assist in building a constraint
 */
-public struct Config {
+public class ConstraintItem {
     
-    /// The interface layout direction
-    public static var interfaceLayoutDirection = InterfaceLayoutDirection.LeftToRight
+    internal init(object: AnyObject?, attributes: ConstraintAttributes) {
+        self.object = object
+        self.attributes = attributes
+    }
     
+    internal weak var object: AnyObject?
+    internal var attributes: ConstraintAttributes
+    
+    internal var view: View? {
+        return self.object as? View
+    }
+    
+    @available(iOS 7.0, *)
+    internal var layoutSupport: LayoutSupport? {
+        return self.object as? LayoutSupport
+    }
+}
+
+
+internal func ==(left: ConstraintItem, right: ConstraintItem) -> Bool {
+    if left.object == nil {
+        return false
+    }
+    if right.object == nil {
+        return false
+    }
+    if left.object !== right.object {
+        return false
+    }
+    if left.attributes != right.attributes {
+        return false
+    }
+    return true
 }

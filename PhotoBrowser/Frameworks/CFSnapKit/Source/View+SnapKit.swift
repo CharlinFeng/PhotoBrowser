@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
 public typealias View = UIView
 #else
@@ -67,8 +67,6 @@ public extension View {
     /// baseline position
     public var snp_baseline: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.Baseline) }
     
-    #if os(iOS)
-    
     /// first baseline position
     @available(iOS 8.0, *)
     public var snp_firstBaseline: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.FirstBaseline) }
@@ -105,8 +103,6 @@ public extension View {
     @available(iOS 8.0, *)
     public var snp_centerYWithinMargins: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.CenterYWithinMargins) }
     
-    #endif
-    
     // top + left + bottom + right edges
     public var snp_edges: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.Edges) }
     
@@ -116,8 +112,6 @@ public extension View {
     // centerX + centerY positions
     public var snp_center: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.Center) }
     
-    #if os(iOS)
-    
     // top + left + bottom + right margins
     @available(iOS 8.0, *)
     public var snp_margins: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.Margins) }
@@ -125,8 +119,6 @@ public extension View {
     // centerX + centerY within margins
     @available(iOS 8.0, *)
     public var snp_centerWithinMargins: ConstraintItem { return ConstraintItem(object: self, attributes: ConstraintAttributes.CenterWithinMargins) }
-    
-    #endif
     
     /**
         Prepares constraints with a `ConstraintMaker` and returns the made constraints but does not install them.
@@ -136,7 +128,7 @@ public extension View {
         :returns: the constraints made
     */
     public func snp_prepareConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> [Constraint] {
-        return ConstraintMaker.prepareConstraints(view: self, file: file, line: line, closure: closure)
+        return ConstraintMaker.prepareConstraints(view: self, location: SourceLocation(file: file, line: line), closure: closure)
     }
     
     /**
@@ -145,7 +137,7 @@ public extension View {
         :param: closure that will be passed the `ConstraintMaker` to make the constraints with
     */
     public func snp_makeConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
-        ConstraintMaker.makeConstraints(view: self, file: file, line: line, closure: closure)
+        ConstraintMaker.makeConstraints(view: self, location: SourceLocation(file: file, line: line), closure: closure)
     }
     
     /**
@@ -156,7 +148,7 @@ public extension View {
         :param: closure that will be passed the `ConstraintMaker` to update the constraints with
     */
     public func snp_updateConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
-        ConstraintMaker.updateConstraints(view: self, file: file, line: line, closure: closure)
+        ConstraintMaker.updateConstraints(view: self, location: SourceLocation(file: file, line: line), closure: closure)
     }
     
     /**
@@ -165,7 +157,7 @@ public extension View {
         :param: closure that will be passed the `ConstraintMaker` to remake the constraints with
     */
     public func snp_remakeConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
-        ConstraintMaker.remakeConstraints(view: self, file: file, line: line, closure: closure)
+        ConstraintMaker.remakeConstraints(view: self, location: SourceLocation(file: file, line: line), closure: closure)
     }
     
     /**

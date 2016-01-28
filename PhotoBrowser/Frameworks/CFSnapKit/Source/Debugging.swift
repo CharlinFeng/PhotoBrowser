@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
 #else
 import AppKit
@@ -101,11 +101,11 @@ public extension LayoutConstraint {
     }
     
     internal var snp_makerFile: String? {
-        return self.snp_constraint?.makerFile
+        return self.snp_constraint?.makerLocation.file
     }
     
     internal var snp_makerLine: UInt? {
-        return self.snp_constraint?.makerLine
+        return self.snp_constraint?.makerLocation.line
     }
     
 }
@@ -149,7 +149,7 @@ private extension NSLayoutRelation {
 private extension NSLayoutAttribute {
     
     private var snp_description: String {
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
         switch self {
         case .NotAnAttribute:       return "notAnAttribute"
         case .Top:                  return "top"

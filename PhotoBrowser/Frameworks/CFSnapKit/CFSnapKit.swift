@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-
+/** 
+ *  You must add -DSNAPKIT_DEPLOYMENT_LEGACY to your OTHER_SWIFT_FLAGS in your targets Build Settings. 
+ */
 
 extension UIView {
     
