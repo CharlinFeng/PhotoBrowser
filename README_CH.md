@@ -1,4 +1,4 @@
-![image](./PhotoBrowser/title.jpg)
+
 <br/><br/>
 ###[English Document](https://github.com/nsdictionary/PhotoBrowser)
 <br/><br/><br/>
@@ -124,7 +124,7 @@ func showHost(index: Int){
 #### (1) 基本展示
 ##### 可以直接展示照片浏览器，且可指定page显示.
 之前我看过的几乎所有的照片浏览器基本都是直接添加在window上的，这样做最简单但有致命缺陷就是设置旋转之后，window上的照片浏览器并不知道。所以我在这里更改了传统做法。照片浏览器初始化传入的vc，请传当前业务控制器即可，不要乱传其他的比如navigationVC，tabarVC哦。。<br/>
-![image](./PhotoBrowser/Show/1.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/1.gif)<br/>
 
 <br/>
 
@@ -132,7 +132,7 @@ func showHost(index: Int){
 
 #### (2) 无NavBar，无TabBar
 照片浏览器是隐藏了状态栏的，在ios7下状态栏是基于Cotroller管理的，但这个不方便我操作，所以你需要在info.plist文件中加一个属性：View controller-based status bar appearance 并将值设置为NO。<br/>
-![image](./PhotoBrowser/Show/2.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/2.gif)<br/>
 
 <br/>
 #### (3) 有NavBar，无TabBar
@@ -141,23 +141,23 @@ func showHost(index: Int){
 <br/>
 #### (4) 无NavBar，有TabBar
 有TabBar的情况下尤为要注意：因为照片浏览器是添加在vc之上的（能自动旋转，并在设计上是合理的），所以您的vc最好是全屏布局的，就是说最好不要使用vc.edgesForExtendedLayout，否则你可能会发现您的照片浏览器不是全屏的大小。<br/>
-![image](./PhotoBrowser/Show/4.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/4.gif)<br/>
 
 <br/>
 #### (5) 有NavBar，有TabBar
-![image](./PhotoBrowser/Show/5.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/5.gif)<br/>
 
 <br/>
 #### (6) Push模式
 #####请直接设置pbVC.showType = PhotoBrowser.ShowType.Push <br/>
 #####Push模式界面已经自定义，统一了界面<br/>
-![image](./PhotoBrowser/Show/6.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/6.gif)<br/>
 
 <br/>
 #### (7) Modal模式
 #####请直接设置pbVC.showType = PhotoBrowser.ShowType.Modal <br/>
 ##### 界面已经自定义
-![image](./PhotoBrowser/Show/7.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/7.gif)<br/>
 
 <br/>
 #### (8) 放大模型：仿网易新闻，经典OC版本模式
@@ -165,7 +165,7 @@ func showHost(index: Int){
 #####仿网易效果为：单击不会退出，但会切换隐藏或显示详细信息。 <br/>
 ##### 单击：显示详细信息
 ##### 再单击：隐藏详细信息并进入全屏深度查看模式，此模式下无pageControl
-![image](./PhotoBrowser/Show/8.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/8.gif)<br/>
 
 <br/>
 #### (9) 放大模式：微信、新浪微博缩放模式
@@ -173,13 +173,13 @@ func showHost(index: Int){
 #####请直接设置pbVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap <br/>
 #####仿微信效果为：单击不会切换详细信息，而是直接就退出。 <br/>
 ##### 注：此模式下可定制详细信息显示模式，下面会写到。
-![image](./PhotoBrowser/Show/9.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/9.gif)<br/>
 <br/>
 
 #### (10) 横屏功能支持：大家在OC版本反馈想要的功能
 ##### 横屏模式可兼容iPad，并可竖进竖出、竖进横出、橫进橫出、橫进竖出。
 ##### 进：指的是点击缩略图进入照片浏览器；出：指的是退出照片浏览器。
-![image](./PhotoBrowser/Show/10.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/10.gif)<br/>
 
 <br/>
 #### (11) 图片保存
@@ -187,20 +187,20 @@ func showHost(index: Int){
 ##### OC版本做了严密的仿重复保存处理，不过代价略高。
 ##### 注：我看了微信、微博也是一样的，下次进入还是可以重复保存，所以不纠结
 
-![image](./PhotoBrowser/Show/11.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/11.gif)<br/>
 
 <br/>
 #### (12) 信息滚动查看：大家在OC版本反馈想要的功能
 ##### 请注意查看第2页详细文字过少因而不能滚动，而第1页文字过多，是可以上下滚动查看的
 ##### 注：文字过少不可滚动。文字过多可直接滚动，可选中文字。
-![image](./PhotoBrowser/Show/12.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/12.gif)<br/>
 
 
 <br/>
 #### (13) 单击模式：详细信息模式
 ##### 有标题以及具体的详细说明文字信息
 ##### 注：默认为显示详细信息，单击退出模式下此功能可定制，请参见下一个示例
-![image](./PhotoBrowser/Show/17.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/17.gif)<br/>
 
 <br/>
 #### (14) 单击模式：去除详细信息模式，仿微信
@@ -211,7 +211,7 @@ func showHost(index: Int){
 //强制关闭显示一切信息
 pbVC.hideMsgForZoomAndDismissWithSingleTap = true
 
-![image](./PhotoBrowser/Show/18.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/18.gif)<br/>
 
 <br/>
 #### (15) 缩略图未加载成功，大图也没有加载成功
@@ -222,17 +222,17 @@ swift中的图片缓存框架Haneke目前不支持下载进度，所以没有图
 <br/>
 #### (16) 缩略图加载成功，大图没有加载成功
 ##### 缩略图动态到照片浏览器正中间120*120缩略图占位状态
-![image](./PhotoBrowser/Show/14.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/14.gif)<br/>
 
 <br/>
 #### (17) 缩略图加载成功，大图也加载成功
 #### 缩略图直接缩放到高清大图计算后的位置占位状态
-![image](./PhotoBrowser/Show/15.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/15.gif)<br/>
 
 <br/>
 #### (18) 缩略图加载成功，图片查看中下载成功及动画
 ##### 由缩略图占位动态变化到高清占位状态
-![image](./PhotoBrowser/Show/16.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/16.gif)<br/>
 
 
 
