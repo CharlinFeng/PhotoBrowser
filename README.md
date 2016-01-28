@@ -1,4 +1,4 @@
-![image](./PhotoBrowser/title.jpg)
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/title.jpg)
 <br/><br/>
 ###[中文文档](https://github.com/nsdictionary/PhotoBrowser/blob/master/README_CH.md)
 ###[个人微博](http://weibo.com/charlin2015/) 、[时点软件](http://ios-android.cn/)
@@ -124,7 +124,7 @@ Network photo album:  PhotoBrowser.PhotoModel(hostHDImgURL:...这个方法。
 <br/>
 #### (1) basic display
 photo browser initial with the current  view controller rather than navigationVC or tabBarVC<br/>
-![image](./PhotoBrowser/Show/1.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/1.gif)<br/>
 
 <br/>
 
@@ -132,82 +132,82 @@ photo browser initial with the current  view controller rather than navigationVC
 
 #### (2) no NavBar and TabBar
 add an attribute in info.plist with: View controller-based status bar appearance and set the value<br/>
-![image](./PhotoBrowser/Show/2.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/2.gif)<br/>
 
 <br/>
 #### (3) NavBar， no TabBar
-![image](./PhotoBrowser/Show/3.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/3.gif)<br/>
 
 <br/>
 #### (4) tabBar, no NavBar
 attention: the photo browser is based on a vc. you’d better not use vc.edgesForExtendedLayout . in case of the photo browser  with a non-full-screen state.<br/>
-![image](./PhotoBrowser/Show/4.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/4.gif)<br/>
 
 <br/>
 #### (5) NavBar, TabBar
-![image](./PhotoBrowser/Show/5.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/5.gif)<br/>
 
 <br/>
 #### (6) push pattern
 ##### pbVC.showType = PhotoBrowser.ShowType.Push <br/>
 
-![image](./PhotoBrowser/Show/6.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/6.gif)<br/>
 
 <br/>
 #### (7) Modal pattern
 #####pbVC.showType = PhotoBrowser.ShowType.Modal <br/>
 
-![image](./PhotoBrowser/Show/7.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/7.gif)<br/>
 
 <br/>
 #### (8) Zoom pattern: a NetEase style
 ##### pbVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick <br/>
-![image](./PhotoBrowser/Show/8.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/8.gif)<br/>
 
 <br/>
 #### (9)Zoom pattern: a weChat Style
 #####pbVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap <br/>
 
-![image](./PhotoBrowser/Show/9.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/9.gif)<br/>
 <br/>
 
 #### (10) lanscape pattern
-![image](./PhotoBrowser/Show/10.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/10.gif)<br/>
 
 <br/>
 #### (11) photo backup
-![image](./PhotoBrowser/Show/11.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/11.gif)<br/>
 
 <br/>
 #### (12) browser information by scrolling
-![image](./PhotoBrowser/Show/12.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/12.gif)<br/>
 
 
 <br/>
 #### (13) one-click pattern: with tile and more details info
-![image](./PhotoBrowser/Show/17.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/17.gif)<br/>
 
 <br/>
 #### (14) one-click pattern: without any info
 attention: the effect is active under ZoomAndDismissWithSingleTap sence
 pbVC.hideMsgForZoomAndDismissWithSingleTap = true<br/>
-![image](./PhotoBrowser/Show/18.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/18.gif)<br/>
 
 <br/>
 #### (15) using black pic as thumbnail by default
-![image](./PhotoBrowser/Show/13.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/13.gif)<br/>
 
 <br/>
 #### (16) thumbnail load , original pic is loading state:
-![image](./PhotoBrowser/Show/14.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/14.gif)<br/>
 
 <br/>
 #### (17) thumbnail load , original pic load state:
-![image](./PhotoBrowser/Show/15.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/15.gif)<br/>
 
 <br/>
 #### (18) thumbnail load, original pic download and animation style
-![image](./PhotoBrowser/Show/16.gif)<br/>
+![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/Show/16.gif)<br/>
 
 
 
