@@ -5,7 +5,7 @@
 照片浏览器终结者（关注[信息公告牌](https://github.com/CharlinFeng/Show)）
 ===============
 <br/>
-.Swift 1.2<br/><br/>
+.Swift 2<br/><br/>
 .Xcode 6.3
 
 <br/>
