@@ -168,7 +168,14 @@ extension ItemCell: UIScrollViewDelegate{
     
     func singleTap(tapG: UITapGestureRecognizer){
         
-        NSNotificationCenter.defaultCenter().postNotificationName(CFPBSingleTapNofi, object: nil)
+        if scrollView.zoomScale > 1 {
+            
+            doubleTap(doubleTapGesture)
+            
+        }else {
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(CFPBSingleTapNofi, object: nil)
+        }
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {return imageV}
