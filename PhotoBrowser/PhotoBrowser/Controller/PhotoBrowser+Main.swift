@@ -71,13 +71,12 @@ extension PhotoBrowser{
         self.view.userInteractionEnabled = true
         
         if (didFinishSavingWithError as NSError?) == nil {
-            showHUD("保存失败", autoDismiss: 2)
-        }
-        else{
             showHUD("保存成功", autoDismiss: 2)
-            
             //记录
             photoArchiverArr.append(page)
+        }
+        else{
+            showHUD("保存失败", autoDismiss: 2)
         }
     }
     
