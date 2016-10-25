@@ -26,9 +26,10 @@ extension PhotoBrowser{
         
         if autoDismiss == -1 {return}
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(autoDismiss * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {[unowned self] () -> Void in
-            
-            self.dismissHUD()
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(autoDismiss * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {[weak self] () -> Void in
+            if self != nil {
+                self!.dismissHUD()
+            }
         })
     }
     
