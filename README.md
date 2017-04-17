@@ -1,7 +1,7 @@
 ![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/title.jpg)
 <br/><br/>
-###[中文文档](https://github.com/nsdictionary/PhotoBrowser/blob/master/README_CH.md)
-###[个人微博](http://weibo.com/charlin2015/) 、[时点软件](http://ios-android.cn/)
+### [中文文档](https://github.com/nsdictionary/PhotoBrowser/blob/master/README_CH.md)
+### [个人微博](http://weibo.com/charlin2015/) 、[时点软件](http://ios-android.cn/)
 <br/><br/>
 #### Begin
 <br/><br/><br/>
@@ -12,7 +12,7 @@ Photo Browser Terminator
 .Xcode 6.3
 
 <br/>
-####This framework is a bit large and you’d better get ready to download the package while browsing.
+#### This framework is a bit large and you’d better get ready to download the package while browsing.
 <br/>
 ### （一）Summary
 1.We already have a OC version of this framework. This time we bring our latest consequent by Swift .https://github.com/nsdictionary/CorePhotoBrowserVC。<br/>
@@ -157,7 +157,7 @@ attention: the photo browser is based on a vc. you’d better not use vc.edgesFo
 
 <br/>
 #### (7) Modal pattern
-#####pbVC.showType = PhotoBrowser.ShowType.Modal <br/>
+##### pbVC.showType = PhotoBrowser.ShowType.Modal <br/>
 
 ![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/7.gif)<br/>
 
@@ -168,7 +168,7 @@ attention: the photo browser is based on a vc. you’d better not use vc.edgesFo
 
 <br/>
 #### (9)Zoom pattern: a weChat Style
-#####pbVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap <br/>
+##### pbVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap <br/>
 
 ![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/9.gif)<br/>
 <br/>
@@ -223,7 +223,7 @@ My Framework based on MIT License
 
 
 <br/><br/>
-###[English Document](https://github.com/nsdictionary/PhotoBrowser)
+### [English Document](https://github.com/nsdictionary/PhotoBrowser)
 <br/><br/><br/>
 照片浏览器终结者（关注[信息公告牌](https://github.com/CharlinFeng/Show)）
 ===============
@@ -232,7 +232,7 @@ My Framework based on MIT License
 .Xcode 6.3
 
 <br/>
-####本框架包比较大，你最好现在先开始下载。不然你可能会等很久。
+#### 本框架包比较大，你最好现在先开始下载。不然你可能会等很久。
 ##### 感谢charlin 3群 @Simn 提供的英文翻译帮助!
 
 <br/>
@@ -331,7 +331,7 @@ func showHost(index: Int){
 
 
 <br/><br/>
-####本地相册和网络相册不同点总结如下：<br/>
+#### 本地相册和网络相册不同点总结如下：<br/>
 1.照片浏览器属性showType：本地相册是枚举值Local,网络相册是枚举值Host<br/>
 2.照片浏览器的相册模型是PhotoBrowser.PhotoModel类型，他有两个初始化方法：<br/>
 本地相册请调用初始化方法PhotoBrowser.PhotoModel(localImg:...，<br/>
@@ -372,29 +372,29 @@ func showHost(index: Int){
 
 <br/>
 #### (6) Push模式
-#####请直接设置pbVC.showType = PhotoBrowser.ShowType.Push <br/>
-#####Push模式界面已经自定义，统一了界面<br/>
+##### 请直接设置pbVC.showType = PhotoBrowser.ShowType.Push <br/>
+##### Push模式界面已经自定义，统一了界面<br/>
 ![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/6.gif)<br/>
 
 <br/>
 #### (7) Modal模式
-#####请直接设置pbVC.showType = PhotoBrowser.ShowType.Modal <br/>
+##### 请直接设置pbVC.showType = PhotoBrowser.ShowType.Modal <br/>
 ##### 界面已经自定义
 ![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/7.gif)<br/>
 
 <br/>
 #### (8) 放大模型：仿网易新闻，经典OC版本模式
-#####请直接设置pbVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick <br/>
-#####仿网易效果为：单击不会退出，但会切换隐藏或显示详细信息。 <br/>
+##### 请直接设置pbVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick <br/>
+##### 仿网易效果为：单击不会退出，但会切换隐藏或显示详细信息。 <br/>
 ##### 单击：显示详细信息
 ##### 再单击：隐藏详细信息并进入全屏深度查看模式，此模式下无pageControl
 ![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/8.gif)<br/>
 
 <br/>
 #### (9) 放大模式：微信、新浪微博缩放模式
-#####大家在OC版本反馈想要的功能，，经典OC版本无此功能<br/>
-#####请直接设置pbVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap <br/>
-#####仿微信效果为：单击不会切换详细信息，而是直接就退出。 <br/>
+##### 大家在OC版本反馈想要的功能，，经典OC版本无此功能<br/>
+##### 请直接设置pbVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap <br/>
+##### 仿微信效果为：单击不会切换详细信息，而是直接就退出。 <br/>
 ##### 注：此模式下可定制详细信息显示模式，下面会写到。
 ![image](https://github.com/CharlinFeng/Resource/blob/master/PhotoBrowser/9.gif)<br/>
 <br/>
@@ -427,7 +427,7 @@ func showHost(index: Int){
 
 <br/>
 #### (14) 单击模式：去除详细信息模式，仿微信
-#####这个是大家在OC版本反馈想要的功能<br/>
+##### 这个是大家在OC版本反馈想要的功能<br/>
 ##### 无标题以及详细文字，但有pageControl
 请设置以下代码，注意此功能仅仅在ZoomAndDismissWithSingleTap下有效
 
