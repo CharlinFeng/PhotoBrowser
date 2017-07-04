@@ -15,16 +15,16 @@ extension PhotoBrowser{
     enum ShowType{
         
         /**  push展示：网易新闻  */
-        case Push
+        case push
         
         /**  modal展示：可能有需要  */
-        case Modal
+        case modal
         
         /**  frame放大模式：单击相册可关闭 */
-        case ZoomAndDismissWithSingleTap
+        case zoomAndDismissWithSingleTap
         
         /**  frame放大模式：点击按钮可关闭 */
-        case ZoomAndDismissWithCancelBtnClick
+        case zoomAndDismissWithCancelBtnClick
     }
     
     
@@ -32,10 +32,10 @@ extension PhotoBrowser{
     enum PhotoType{
         
         /**  本地相册  */
-        case Local
+        case local
         
         /**  服务器相册  */
-        case Host
+        case host
     }
 
 }

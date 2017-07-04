@@ -13,12 +13,12 @@ extension PhotoBrowser{
     
     
     /** 展示动画: 妈妈，这里好复杂~~ */
-    func zoomInWithAnim(page: Int){
+    func zoomInWithAnim(_ page: Int){
         
         let photoModel = photoModels[page]
         
-        let propImgV = UIImageView(frame: photoModel.sourceView.convertRect(photoModel.sourceView.bounds, toView: vc.view))
-        propImgV.contentMode = UIViewContentMode.ScaleAspectFill
+        let propImgV = UIImageView(frame: photoModel.sourceView.convert(photoModel.sourceView.bounds, to: vc.view))
+        propImgV.contentMode = UIViewContentMode.scaleAspectFill
         propImgV.clipsToBounds = true
         
         vc.view.addSubview(propImgV)
@@ -26,7 +26,7 @@ extension PhotoBrowser{
         self.view.alpha = 0
         self.collectionView.alpha = 0
         
-        if photoType == PhotoType.Local {
+        if photoType == PhotoType.local {
             
             propImgV.image = photoModel.localImg
             
@@ -44,7 +44,7 @@ extension PhotoBrowser{
                 
             }.onFailure{[unowned self] error in
                 
-                let size = CGSizeMake(CFPBThumbNailWH, CFPBThumbNailWH)
+                let size = CGSize(width: CFPBThumbNailWH, height: CFPBThumbNailWH)
                 
                 if photoModel.hostThumbnailImg != nil {
                     
@@ -55,7 +55,7 @@ extension PhotoBrowser{
                 }else{
                     
                     /** 这里需要大量修改 */
-                    let img = UIImage.imageWithColor(size: CGSizeMake(CFPBThumbNailWH, CFPBThumbNailWH))
+                    let img = UIImage.imageWithColor(size: CGSize(width: CFPBThumbNailWH, height: CFPBThumbNailWH))
                     
                     propImgV.image = img
                     
@@ -66,12 +66,12 @@ extension PhotoBrowser{
         }
     }
     
-    func handleShowAnim(propImgV: UIImageView,thumbNailSize: CGSize?){
+    func handleShowAnim(_ propImgV: UIImageView,thumbNailSize: CGSize?){
         
         let showSize = thumbNailSize ?? CGSize.decisionShowSize(propImgV.image!.size, contentSize: vc.view.bounds.size)
         
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: UIViewAnimationOptions.CurveEaseOut, animations: {[unowned self] () -> Void in
-            propImgV.bounds = CGRectMake(0, 0, showSize.width, showSize.height)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: UIViewAnimationOptions.curveEaseOut, animations: {[unowned self] () -> Void in
+            propImgV.bounds = CGRect(x: 0, y: 0, width: showSize.width, height: showSize.height)
             propImgV.center = self.vc.view.center
             self.view.alpha = 1
             }) { (complete) -> Void in
@@ -84,32 +84,32 @@ extension PhotoBrowser{
 
     
     /** 关闭动画 */
-    func zoomOutWithAnim(page: Int){
+    func zoomOutWithAnim(_ page: Int){
     
         let photoModel = photoModels[page]
         
-        let cell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: page, inSection: 0)) as! ItemCell
+        let cell = collectionView.cellForItem(at: IndexPath(item: page, section: 0)) as! ItemCell
         
         let cellImageView = cell.imageV
         
-        let propImgV = UIImageView(frame: cellImageView.frame)
-        propImgV.contentMode = UIViewContentMode.ScaleAspectFill
+        let propImgV = UIImageView(frame: (cellImageView?.frame)!)
+        propImgV.contentMode = UIViewContentMode.scaleAspectFill
         propImgV.clipsToBounds = true
-        propImgV.image = !cell.hasHDImage && photoModel.hostThumbnailImg == nil ? UIImage.imageWithColor(size: CGSizeMake(CFPBThumbNailWH, CFPBThumbNailWH)) : cellImageView.image
-        propImgV.frame = cellImageView.frame
+        propImgV.image = !cell.hasHDImage && photoModel.hostThumbnailImg == nil ? UIImage.imageWithColor(size: CGSize(width: CFPBThumbNailWH, height: CFPBThumbNailWH)) : cellImageView?.image
+        propImgV.frame = (cellImageView?.frame)!
 
         vc.view.addSubview(propImgV)
         
-        cellImageView.hidden = true
-        photoModel.sourceView.hidden = true
+        cellImageView?.isHidden = true
+        photoModel.sourceView.isHidden = true
         
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: UIViewAnimationOptions.CurveEaseOut, animations: {[unowned self] () -> Void in
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: UIViewAnimationOptions.curveEaseOut, animations: {[unowned self] () -> Void in
                 self.view.alpha = 0
-                propImgV.frame = photoModel.sourceView.convertRect(photoModel.sourceView.bounds, toView: self.vc.view)
+                propImgV.frame = photoModel.sourceView.convert(photoModel.sourceView.bounds, to: self.vc.view)
             
             }) { (complete) -> Void in
                 
-                photoModel.sourceView.hidden = false
+                photoModel.sourceView.isHidden = false
                 propImgV.removeFromSuperview()
                 self.view.removeFromSuperview()
                 self.removeFromParentViewController()

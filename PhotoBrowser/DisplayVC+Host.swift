@@ -92,7 +92,7 @@ extension DisplayVC{
     
     
     /** 网络相册相册 */
-    func showHost(index: Int){
+    func showHost(_ index: Int){
         
         
         let pbVC = PhotoBrowser()
@@ -101,18 +101,18 @@ extension DisplayVC{
         pbVC.showType = showType
         
         /**  设置相册类型  */
-        pbVC.photoType = PhotoBrowser.PhotoType.Host
+        pbVC.photoType = PhotoBrowser.PhotoType.host
         
         //强制关闭显示一切信息
         pbVC.hideMsgForZoomAndDismissWithSingleTap = true
         
         var models: [PhotoBrowser.PhotoModel] = []
         
-        let titles = langType == LangType.Chinese ? titleHostCH : titleHostEN
-        let descs = langType == LangType.Chinese ? descHostCH : descHostEN
+        let titles = langType == LangType.chinese ? titleHostCH : titleHostEN
+        let descs = langType == LangType.chinese ? descHostCH : descHostEN
         
         //模型数据数组
-        for (var i=0; i<9; i++){
+        for i in 0 ..< 9 {
             
             let model = PhotoBrowser.PhotoModel(hostHDImgURL: hostHDImageUrls[i], hostThumbnailImg: (displayView.subviews[i] as! UIImageView).image, titleStr: titles[i], descStr: descs[i], sourceView: displayView.subviews[i])
 

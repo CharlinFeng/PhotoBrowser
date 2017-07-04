@@ -13,28 +13,27 @@ extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
     
     var cellID: String {return "ItemCell"}
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         handleRotation(false)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         handleRotation(false)
-        collectionView.hidden = false
-        let isZoomType = self.showType == PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick || self.showType == PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap
+        collectionView.isHidden = false
+        let isZoomType = self.showType == PhotoBrowser.ShowType.zoomAndDismissWithCancelBtnClick || self.showType == PhotoBrowser.ShowType.zoomAndDismissWithSingleTap
         
-        if self.photoType == PhotoType.Local {
+        if self.photoType == PhotoType.local {
         
-            collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: showIndex, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: !isZoomType)
+            collectionView.scrollToItem(at: IndexPath(item: showIndex, section: 0), at: UICollectionViewScrollPosition.left, animated: !isZoomType)
         
         }else{
          
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-                Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
                     
-                    self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: self.showIndex, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: !isZoomType)
+                    self.collectionView.scrollToItem(at: IndexPath(item: self.showIndex, section: 0), at: UICollectionViewScrollPosition.left, animated: !isZoomType)
             }
         }
     }
@@ -45,35 +44,35 @@ extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
         
         //添加
         self.view.addSubview(collectionView)
-        collectionView.make_4Inset(UIEdgeInsetsMake(0, 0, 0, -CFPBExtraWidth))
+        collectionView.make_4Inset(inset: UIEdgeInsetsMake(0, 0, 0, -CFPBExtraWidth))
 
         //注册cell
-        collectionView.registerNib(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
-        collectionView.pagingEnabled = true
+        collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
+        collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         
-        let isZoomType = self.showType == PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick || self.showType == PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap
+        let isZoomType = self.showType == PhotoBrowser.ShowType.zoomAndDismissWithCancelBtnClick || self.showType == PhotoBrowser.ShowType.zoomAndDismissWithSingleTap
         
         if isZoomType {
-            collectionView.hidden = true
+            collectionView.isHidden = true
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleRotation:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PhotoBrowser.handleRotation(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 
     
     
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return photoModels.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let itemCell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! ItemCell
+        let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! ItemCell
  
         itemCell.photoType = photoType
         
@@ -89,12 +88,12 @@ extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
         
         itemCell.countLabel.text = "\(indexPath.row + 1) / \(photoModels.count)"
         
-        if hideMsgForZoomAndDismissWithSingleTap && showType == .ZoomAndDismissWithSingleTap {itemCell.toggleDisplayBottomBar(true)}
+        if hideMsgForZoomAndDismissWithSingleTap && showType == .zoomAndDismissWithSingleTap {itemCell.toggleDisplayBottomBar(true)}
         
         return itemCell
     }
     
-    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         let itemCell = cell as! ItemCell
         
@@ -102,9 +101,9 @@ extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
     }
 
     
-    func handleRotation(anim: Bool){
+    func handleRotation(_ anim: Bool){
         
-        dispatch_async(dispatch_get_main_queue(), {[unowned self] () -> Void in
+        DispatchQueue.main.async(execute: {[unowned self] () -> Void in
             
             let layout = Layout()
             
@@ -112,11 +111,11 @@ extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
             
             self.collectionView.setCollectionViewLayout(layout, animated: anim)
             
-            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: self.page, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
+            self.collectionView.scrollToItem(at: IndexPath(item: self.page, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
         })
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         page = Int(scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5)
     }

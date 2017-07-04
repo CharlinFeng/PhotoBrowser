@@ -11,8 +11,8 @@ import UIKit
 
 enum PhotoType: Int {
     
-    case Local
-    case Host
+    case local
+    case host
 }
 
 
@@ -34,18 +34,18 @@ extension PhotoTypeChooseVC{
         
         super.viewDidLoad()
         
-        if langType == LangType.Chinese {return}
+        if langType == LangType.chinese {return}
         
         titleLabel.text = "Select Type"
-        localBtn.setTitle("Local Album", forState: UIControlState.Normal)
-        localBtn.titleLabel?.font = UIFont.systemFontOfSize(20)
-        hostBtn.setTitle("Host Album", forState: UIControlState.Normal)
-        hostBtn.titleLabel?.font = UIFont.systemFontOfSize(20)
+        localBtn.setTitle("Local Album", for: UIControlState())
+        localBtn.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        hostBtn.setTitle("Host Album", for: UIControlState())
+        hostBtn.titleLabel?.font = UIFont.systemFont(ofSize: 20)
     }
     
-    @IBAction func btnClick(sender: UIButton) {
+    @IBAction func btnClick(_ sender: UIButton) {
         
-        let showTypeChooseVC = ShowTypeChooseTVC(style: UITableViewStyle.Plain)
+        let showTypeChooseVC = ShowTypeChooseTVC(style: UITableViewStyle.plain)
         showTypeChooseVC.langType = langType
         showTypeChooseVC.photoType = PhotoType(rawValue: sender.tag)
         self.navigationController?.pushViewController(showTypeChooseVC, animated: true)

@@ -11,7 +11,7 @@ import UIKit
 class DisplayView: UIView {
 
     
-    var tapedImageV: ((index: Int)->())?
+    var tapedImageV: ((_ index: Int)->())?
     
 }
 
@@ -19,29 +19,29 @@ class DisplayView: UIView {
 extension DisplayView{
     
     /** 准备 */
-    func imgsPrepare(imgs: [String], isLocal: Bool){
+    func imgsPrepare(_ imgs: [String], isLocal: Bool){
        
-        for (var i=0; i<imgs.count; i++){
+        for i in 0 ..< imgs.count {
             
-            let imgV = UIImageView(frame: CGRectMake(0, 0, 200, 200))
-            imgV.backgroundColor = UIColor.lightGrayColor()
-            imgV.userInteractionEnabled = true
-            imgV.contentMode = UIViewContentMode.ScaleAspectFill
+            let imgV = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+            imgV.backgroundColor = UIColor.lightGray
+            imgV.isUserInteractionEnabled = true
+            imgV.contentMode = UIViewContentMode.scaleAspectFill
             imgV.clipsToBounds = true
-            imgV.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tapAction:"))
+            imgV.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DisplayView.tapAction(_:))))
             imgV.tag = i
             if isLocal {
                 imgV.image = UIImage(named: imgs[i])
             }else{
-                imgV.hnk_setImageFromURL(NSURL(string: imgs[i])!)
+                imgV.hnk_setImageFromURL(URL(string: imgs[i])!)
             }
             self.addSubview(imgV)
         }
     }
     
     
-    func tapAction(tap: UITapGestureRecognizer){
-        tapedImageV?(index: tap.view!.tag)
+    func tapAction(_ tap: UITapGestureRecognizer){
+        tapedImageV?(tap.view!.tag)
     }
     
     
@@ -66,9 +66,9 @@ extension DisplayView{
             
             let x = (CGFloat(col) + 1) * margin + CGFloat(col) * itemWH
             let y = (CGFloat(row) + 1) * margin + CGFloat(row) * itemWH
-            let frame = CGRectMake(x, y, itemWH, itemWH)
+            let frame = CGRect(x: x, y: y, width: itemWH, height: itemWH)
             view.frame = frame
-            i++
+            i += 1
         }
     }
 }

@@ -19,91 +19,91 @@ extension UIView {
     func make_4Inset(inset: UIEdgeInsets){
         
         if self.superview == nil {return}
-            
-        self.snp_makeConstraints{ (make) -> Void in
+
+        self.snp.makeConstraints{ (make) -> Void in
             make.edges.equalTo(self.superview!).inset(inset)
         }
     }
     
     /**  顶部内边距 + 高度  */
-    func make_topInsets_topHeight(top top: CGFloat, left: CGFloat, right: CGFloat, topHeight: CGFloat){
+    func make_topInsets_topHeight(top: CGFloat, left: CGFloat, right: CGFloat, topHeight: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.top.equalTo(sv!.snp_top).offset(top)
-            make.leading.equalTo(sv!.snp_leading).offset(left)
-            make.trailing.equalTo(sv!.snp_trailing).offset(-right)
+            make.top.equalTo(sv!.snp.top).offset(top)
+            make.leading.equalTo(sv!.snp.leading).offset(left)
+            make.trailing.equalTo(sv!.snp.trailing).offset(-right)
             make.height.equalTo(topHeight)
         }
     }
     
     
     /**  左侧内边距 + 宽度  */
-    func make_leftInsets_leftWidth(top top: CGFloat, left: CGFloat, bottom: CGFloat, leftWidth: CGFloat){
+    func make_leftInsets_leftWidth(top: CGFloat, left: CGFloat, bottom: CGFloat, leftWidth: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.top.equalTo(sv!.snp_top).offset(top)
-            make.leading.equalTo(sv!.snp_leading).offset(left)
-            make.bottom.equalTo(sv!.snp_bottom).offset(-bottom)
+            make.top.equalTo(sv!.snp.top).offset(top)
+            make.leading.equalTo(sv!.snp.leading).offset(left)
+            make.bottom.equalTo(sv!.snp.bottom).offset(-bottom)
             make.width.equalTo(leftWidth)
         }
     }
     
     
     /**  底部内边距 + 高度  */
-    func make_bottomInsets_bottomHeight(left left: CGFloat, bottom: CGFloat, right: CGFloat, bottomHeight: CGFloat){
+    func make_bottomInsets_bottomHeight(left: CGFloat, bottom: CGFloat, right: CGFloat, bottomHeight: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.leading.equalTo(sv!.snp_leading).offset(left)
-            make.bottom.equalTo(sv!.snp_bottom).offset(-bottom)
-            make.trailing.equalTo(sv!.snp_trailing).offset(-right)
+            make.leading.equalTo(sv!.snp.leading).offset(left)
+            make.bottom.equalTo(sv!.snp.bottom).offset(-bottom)
+            make.trailing.equalTo(sv!.snp.trailing).offset(-right)
             make.height.equalTo(bottomHeight)
         }
     }
     
     
     /**  右侧内边距 + 宽度  */
-    func make_rightInsets_rightWidth(bottom bottom: CGFloat, right: CGFloat, top: CGFloat, rightWidth: CGFloat){
+    func make_rightInsets_rightWidth(bottom: CGFloat, right: CGFloat, top: CGFloat, rightWidth: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.top.equalTo(sv!.snp_top).offset(top)
-            make.bottom.equalTo(sv!.snp_bottom).offset(-bottom)
-            make.trailing.equalTo(sv!.snp_trailing).offset(-right)
+            make.top.equalTo(sv!.snp.top).offset(top)
+            make.bottom.equalTo(sv!.snp.bottom).offset(-bottom)
+            make.trailing.equalTo(sv!.snp.trailing).offset(-right)
             make.width.equalTo(rightWidth)
         }
     }
     
 
     /**  左上角 + 宽度 + 高度  */
-    func make_leftTop_WH(top top: CGFloat, left: CGFloat, leftWidth: CGFloat, topHeight: CGFloat){
+    func make_leftTop_WH(top: CGFloat, left: CGFloat, leftWidth: CGFloat, topHeight: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.top.equalTo(sv!.snp_top).offset(top)
-            make.leading.equalTo(sv!.snp_leading).offset(left)
+            make.top.equalTo(sv!.snp.top).offset(top)
+            make.leading.equalTo(sv!.snp.leading).offset(left)
             make.width.equalTo(leftWidth)
             make.height.equalTo(topHeight)
         }
@@ -111,16 +111,16 @@ extension UIView {
 
     
     /**  右上角 + 宽度 + 高度  */
-    func make_rightTop_WH(top top: CFloat, right: CGFloat, rightWidth: CGFloat, topHeight: CGFloat){
+    func make_rightTop_WH(top: CFloat, right: CGFloat, rightWidth: CGFloat, topHeight: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.top.equalTo(sv!.snp_top).offset(top)
-            make.trailing.equalTo(sv!.snp_trailing).offset(-right)
+            make.top.equalTo(sv!.snp.top).offset(top)
+            make.trailing.equalTo(sv!.snp.trailing).offset(-right)
             make.width.equalTo(rightWidth)
             make.height.equalTo(topHeight)
         }
@@ -128,16 +128,16 @@ extension UIView {
 
     
     /**  左下角 + 宽度 + 高度  */
-    func make_leftBottom_WH(left left: CGFloat, bottom: CGFloat, leftWidth: CGFloat, bottomHeight: CGFloat){
+    func make_leftBottom_WH(left: CGFloat, bottom: CGFloat, leftWidth: CGFloat, bottomHeight: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.leading.equalTo(sv!.snp_leading).offset(left)
-            make.bottom.equalTo(sv!.snp_bottom).offset(-bottom)
+            make.leading.equalTo(sv!.snp.leading).offset(left)
+            make.bottom.equalTo(sv!.snp.bottom).offset(-bottom)
             make.width.equalTo(leftWidth)
             make.height.equalTo(bottomHeight)
         }
@@ -145,16 +145,16 @@ extension UIView {
     
 
     /**  右下角 + 宽度 + 高度  */
-    func make_rightBottom(bottom bottom: CGFloat, right: CGFloat, rightWidth: CGFloat, bottomHeight: CGFloat){
+    func make_rightBottom(bottom: CGFloat, right: CGFloat, rightWidth: CGFloat, bottomHeight: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.trailing.equalTo(sv!.snp_trailing).offset(-right)
-            make.bottom.equalTo(sv!.snp_bottom).offset(-bottom)
+            make.trailing.equalTo(sv!.snp.trailing).offset(-right)
+            make.bottom.equalTo(sv!.snp.bottom).offset(-bottom)
             make.width.equalTo(rightWidth)
             make.height.equalTo(bottomHeight)
         }
@@ -162,15 +162,16 @@ extension UIView {
     
     
     /**  中点 + 偏移 + 大小  */
-    func make_center(offsest offsest: CGPoint, width: CGFloat, height: CGFloat){
+    func make_center(offsest: CGPoint, width: CGFloat, height: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.center.equalTo(sv!.snp_center).offset(offsest)
+            make.centerX.equalTo(sv!.snp.centerX).offset(offsest.x)
+            make.centerY.equalTo(sv!.snp.centerY).offset(offsest.y)
             make.width.equalTo(width)
             make.height.equalTo(height)
         }
@@ -178,16 +179,16 @@ extension UIView {
     
     
     /** 顶部居中 + 宽高 */
-    func make_top_WH(top top: CGFloat, offsetX: CGFloat, width: CGFloat, height: CGFloat){
+    func make_top_WH(top: CGFloat, offsetX: CGFloat, width: CGFloat, height: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.centerX.equalTo(sv!.snp_centerX).offset(offsetX)
-            make.top.equalTo(sv!.snp_top).offset(top)
+            make.centerX.equalTo(sv!.snp.centerX).offset(offsetX)
+            make.top.equalTo(sv!.snp.top).offset(top)
             make.width.equalTo(width)
             make.height.equalTo(height)
         }
@@ -195,32 +196,32 @@ extension UIView {
     
     
     /** 左侧居中 + 宽高 */
-    func make_left_WH(left left: CGFloat, offsetY: CGFloat, width: CGFloat, height: CGFloat){
+    func make_left_WH(left: CGFloat, offsetY: CGFloat, width: CGFloat, height: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.centerY.equalTo(sv!.snp_centerY).offset(offsetY)
-            make.leading.equalTo(sv!.snp_leading).offset(left)
+            make.centerY.equalTo(sv!.snp.centerY).offset(offsetY)
+            make.leading.equalTo(sv!.snp.leading).offset(left)
             make.width.equalTo(width)
             make.height.equalTo(height)
         }
     }
     
     /** 底部居中 + 宽高 */
-    func make_bottom_WH(bottom bottom: CGFloat, offsetX: CGFloat, width: CGFloat, height: CGFloat){
+    func make_bottom_WH(bottom: CGFloat, offsetX: CGFloat, width: CGFloat, height: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.centerX.equalTo(sv!.snp_centerX).offset(offsetX)
-            make.bottom.equalTo(sv!.snp_bottom).offset(-bottom)
+            make.centerX.equalTo(sv!.snp.centerX).offset(offsetX)
+            make.bottom.equalTo(sv!.snp.bottom).offset(-bottom)
             make.width.equalTo(width)
             make.height.equalTo(height)
         }
@@ -228,16 +229,16 @@ extension UIView {
     
     
     /** 右侧居中 + 宽高 */
-    func make_right_WH(right right: CGFloat, offsetY: CGFloat, width: CGFloat, height: CGFloat){
+    func make_right_WH(right: CGFloat, offsetY: CGFloat, width: CGFloat, height: CGFloat){
         
         let sv = self.superview
         
         if sv == nil {return}
         
-        self.snp_makeConstraints{ (make) -> Void in
+        self.snp.makeConstraints{ (make) -> Void in
             
-            make.centerY.equalTo(sv!.snp_centerY).offset(offsetY)
-            make.trailing.equalTo(sv!.snp_trailing).offset(-right)
+            make.centerY.equalTo(sv!.snp.centerY).offset(offsetY)
+            make.trailing.equalTo(sv!.snp.trailing).offset(-right)
             make.width.equalTo(width)
             make.height.equalTo(height)
 
@@ -249,7 +250,7 @@ extension UIView {
     /** 宽度约束 */
     func make_width(equal: CGFloat) {
 
-        self.snp_makeConstraints { (make) -> Void in
+        self.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(equal)
         }
     }
@@ -257,7 +258,7 @@ extension UIView {
     /** 高度约束 */
     func make_height(equal: CGFloat) {
         
-        self.snp_makeConstraints { (make) -> Void in
+        self.snp.makeConstraints { (make) -> Void in
             make.height.equalTo(equal)
         }
     }
@@ -272,40 +273,40 @@ extension UIView {
     :param: vdEnum view.direction
     :param: o  offsetValue
     */
-    func make_relation(sd sd: Int, v: UIView!, vd: Int, o: CGFloat) -> ConstraintDescriptionEditable!{
+    func make_relation(sd: Int, v: UIView!, vd: Int, o: CGFloat) -> ConstraintMakerEditable!{
 
         if superview == nil {return nil}
         
         let relationView = v ?? superview!
 
-        var c: ConstraintDescriptionEditable! = nil
+        var c: ConstraintMakerEditable! = nil
     
         let sdEnum = Direction(rawValue: sd)
         let vdEnum = Direction(rawValue: vd)
-        
+
         if sdEnum == .Top {
             
             if vdEnum == .Top {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.top.equalTo(relationView.snp_top).offset(o)
+                self.snp.makeConstraints({ (make) -> Void in
+                    c = make.top.equalTo(relationView.snp.top).offset(o)
                 })
                 
             }else if vdEnum == .Left {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.top.equalTo(relationView.snp_leading).offset(o)
+                self.snp.makeConstraints( { (make) -> Void in
+                    c = make.top.equalTo(relationView.snp.leading).offset(o)
                 })
                 
             }else if vdEnum == .Bottom {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.top.equalTo(relationView.snp_bottom).offset(-o)
+                self.snp.makeConstraints( { (make) -> Void in
+                    c = make.top.equalTo(relationView.snp.bottom).offset(-o)
                 })
             }else if vdEnum == .Right {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.top.equalTo(relationView.snp_trailing).offset(-o)
+                self.snp.makeConstraints({ (make) -> Void in
+                    c = make.top.equalTo(relationView.snp.trailing).offset(-o)
                 })
             }
             
@@ -313,52 +314,52 @@ extension UIView {
             
             if vdEnum == .Top {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.leading.equalTo(relationView.snp_top).offset(o)
+                self.snp.makeConstraints( { (make) -> Void in
+                    c = make.leading.equalTo(relationView.snp.top).offset(o)
                 })
                 
             }else if vdEnum == .Left {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.leading.equalTo(relationView.snp_leading).offset(o)
+                self.snp.makeConstraints( { (make) -> Void in
+                    c = make.leading.equalTo(relationView.snp.leading).offset(o)
                 })
                 
             }else if vdEnum == .Bottom {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.leading.equalTo(relationView.snp_bottom).offset(-o)
+                self.snp.makeConstraints({ (make) -> Void in
+                    c = make.leading.equalTo(relationView.snp.bottom).offset(-o)
                 })
                 
             }else if vdEnum == .Right {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.leading.equalTo(relationView.snp_trailing).offset(-o)
+                self.snp.makeConstraints( { (make) -> Void in
+                    c = make.leading.equalTo(relationView.snp.trailing).offset(-o)
                 })
             }
         }else if sdEnum == .Bottom {
             
             if vdEnum == .Top {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.bottom.equalTo(relationView.snp_top).offset(o)
+                self.snp.makeConstraints( { (make) -> Void in
+                    c = make.bottom.equalTo(relationView.snp.top).offset(o)
                 })
                 
             }else if vdEnum == .Left {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.bottom.equalTo(relationView.snp_leading).offset(o)
+                self.snp.makeConstraints({ (make) -> Void in
+                    c = make.bottom.equalTo(relationView.snp.leading).offset(o)
                 })
                 
             }else if vdEnum == .Bottom {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.bottom.equalTo(relationView.snp_bottom).offset(-o)
+                self.snp.makeConstraints( { (make) -> Void in
+                    c = make.bottom.equalTo(relationView.snp.bottom).offset(-o)
                 })
                 
             }else if vdEnum == .Right {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.bottom.equalTo(relationView.snp_trailing).offset(-o)
+                self.snp.makeConstraints( { (make) -> Void in
+                    c = make.bottom.equalTo(relationView.snp.trailing).offset(-o)
                 })
             }
             
@@ -366,26 +367,26 @@ extension UIView {
             
             if vdEnum == .Top {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.trailing.equalTo(relationView.snp_top).offset(o)
+                self.snp.makeConstraints({ (make) -> Void in
+                    c = make.trailing.equalTo(relationView.snp.top).offset(o)
                 })
                 
             }else if vdEnum == .Left {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.trailing.equalTo(relationView.snp_leading).offset(o)
+                self.snp.makeConstraints({ (make) -> Void in
+                    c = make.trailing.equalTo(relationView.snp.leading).offset(o)
                 })
                 
             }else if vdEnum == .Bottom {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.trailing.equalTo(relationView.snp_bottom).offset(-o)
+                self.snp.makeConstraints({ (make) -> Void in
+                    c = make.trailing.equalTo(relationView.snp.bottom).offset(-o)
                 })
                 
             }else if vdEnum == .Right {
                 
-                self.snp_makeConstraints(closure: { (make) -> Void in
-                    c = make.trailing.equalTo(relationView.snp_trailing).offset(-o)
+                self.snp.makeConstraints({ (make) -> Void in
+                    c = make.trailing.equalTo(relationView.snp.trailing).offset(-o)
                 })
             }
         }

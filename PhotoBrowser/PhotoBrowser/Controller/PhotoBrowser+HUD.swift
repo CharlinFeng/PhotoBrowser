@@ -13,20 +13,20 @@ extension PhotoBrowser{
   
     
     /** 展示 */
-    func showHUD(text: String,autoDismiss: Double){
+    func showHUD(_ text: String,autoDismiss: Double){
         
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
+        UIView.animate(withDuration: 0.25, animations: { () -> Void in
             self.hud.alpha = 1
         })
         
         hud.text = text
         
         self.view.addSubview(hud)
-        hud.make_center(offsest: CGPointZero, width: 120, height: 44)
+        hud.make_center(offsest: CGPoint.zero, width: 120, height: 44)
         
         if autoDismiss == -1 {return}
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(autoDismiss * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {[unowned self] () -> Void in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(autoDismiss * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {[unowned self] () -> Void in
             
             self.dismissHUD()
         })
@@ -35,16 +35,16 @@ extension PhotoBrowser{
     /** 消失 */
     func dismissHUD(){
         
-        UIView.animateWithDuration(0.25, animations: {[unowned self] () -> Void in
+        UIView.animate(withDuration: 0.25, animations: {[unowned self] () -> Void in
             
             self.hud.alpha = 0
             
-        }) { (compelte) -> Void in
+        }, completion: { (compelte) -> Void in
             
             self.hud.text = ""
             
             self.hud.removeFromSuperview()
-        }
+        }) 
     }
     
 }

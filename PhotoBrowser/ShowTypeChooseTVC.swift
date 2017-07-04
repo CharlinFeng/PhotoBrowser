@@ -28,24 +28,24 @@ extension ShowTypeChooseTVC{
         tableView.tableFooterView = UIView()
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(rid) ?? UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: rid)
+        let cell = tableView.dequeueReusableCell(withIdentifier: rid) ?? UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: rid)
         
         cell.textLabel?.text = dataList[indexPath.row]
-        cell.textLabel?.font = UIFont.systemFontOfSize(24)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 24)
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let displayVC = DisplayVC()
         displayVC.langType = langType
@@ -53,10 +53,10 @@ extension ShowTypeChooseTVC{
         
         switch indexPath.row {
         
-            case 0:displayVC.showType = PhotoBrowser.ShowType.Push
-            case 1:displayVC.showType = PhotoBrowser.ShowType.Modal
-            case 2:displayVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick
-            case 3:displayVC.showType = PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap
+            case 0:displayVC.showType = PhotoBrowser.ShowType.push
+            case 1:displayVC.showType = PhotoBrowser.ShowType.modal
+            case 2:displayVC.showType = PhotoBrowser.ShowType.zoomAndDismissWithCancelBtnClick
+            case 3:displayVC.showType = PhotoBrowser.ShowType.zoomAndDismissWithSingleTap
             default: break
         }
         

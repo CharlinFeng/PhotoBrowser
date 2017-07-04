@@ -21,26 +21,26 @@ extension PhotoBrowser{
         /**  控制器准备  */
         vcPrepare()
         
-        self.edgesForExtendedLayout = UIRectEdge.None
-        view.backgroundColor = UIColor.blackColor()
+        self.edgesForExtendedLayout = UIRectEdge()
+        view.backgroundColor = UIColor.black
     }
     
     /**  控制器准备  */
     func vcPrepare(){
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "singleTapAction", name: CFPBSingleTapNofi, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PhotoBrowser.singleTapAction), name: NSNotification.Name(rawValue: CFPBSingleTapNofi), object: nil)
     
-        if showType != PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap {
+        if showType != PhotoBrowser.ShowType.zoomAndDismissWithSingleTap {
             
-            dismissBtn = UIButton(frame: CGRectMake(0, 0, 40, 40))
-            dismissBtn.setBackgroundImage(UIImage(named: "pic.bundle/cancel"), forState: UIControlState.Normal)
-            dismissBtn.addTarget(self, action: "dismissPrepare", forControlEvents: UIControlEvents.TouchUpInside)
+            dismissBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+            dismissBtn.setBackgroundImage(UIImage(named: "pic.bundle/cancel"), for: UIControlState())
+            dismissBtn.addTarget(self, action: #selector(PhotoBrowser.dismissPrepare), for: UIControlEvents.touchUpInside)
             self.view.addSubview(dismissBtn)
         
             //保存按钮
             saveBtn = UIButton()
-            saveBtn.setBackgroundImage(UIImage(named: "pic.bundle/save"), forState: UIControlState.Normal)
-            saveBtn.addTarget(self, action: "saveAction", forControlEvents: UIControlEvents.TouchUpInside)
+            saveBtn.setBackgroundImage(UIImage(named: "pic.bundle/save"), for: UIControlState())
+            saveBtn.addTarget(self, action: #selector(PhotoBrowser.saveAction), for: UIControlEvents.touchUpInside)
             self.view.addSubview(saveBtn)
             saveBtn.make_rightTop_WH(top: 0, right: 0, rightWidth: 40, topHeight: 40)
         }
@@ -52,7 +52,7 @@ extension PhotoBrowser{
         
         if photoArchiverArr.contains(page) {showHUD("已经保存", autoDismiss: 2); return}
         
-        let itemCell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: page, inSection: 0)) as! ItemCell
+        let itemCell = collectionView.cellForItem(at: IndexPath(item: page, section: 0)) as! ItemCell
         
         if itemCell.imageV.image == nil {showHUD("图片未下载", autoDismiss: 2); return}
         
@@ -60,15 +60,15 @@ extension PhotoBrowser{
         
         showHUD("保存中", autoDismiss: -1)
     
-        UIImageWriteToSavedPhotosAlbum(itemCell.imageV.image!, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
+        UIImageWriteToSavedPhotosAlbum(itemCell.imageV.image!, self, #selector(PhotoBrowser.image(_:didFinishSavingWithError:contextInfo:)), nil)
         
-        self.view.userInteractionEnabled = false
+        self.view.isUserInteractionEnabled = false
     }
 
     /** come on */
-    func image(image: UIImage, didFinishSavingWithError: NSError, contextInfo:UnsafePointer<Void>){
+    func image(_ image: UIImage, didFinishSavingWithError: NSError, contextInfo:UnsafeRawPointer){
      
-        self.view.userInteractionEnabled = true
+        self.view.isUserInteractionEnabled = true
         
         if (didFinishSavingWithError as NSError?) == nil {
             showHUD("保存失败", autoDismiss: 2)
@@ -85,15 +85,15 @@ extension PhotoBrowser{
     /**  单击事件  */
     func singleTapAction(){
         
-        if showType != PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap {
+        if showType != PhotoBrowser.ShowType.zoomAndDismissWithSingleTap {
         
             isHiddenBar = !isHiddenBar
             
-            dismissBtn.hidden = isHiddenBar
-            saveBtn.hidden = isHiddenBar
+            dismissBtn.isHidden = isHiddenBar
+            saveBtn.isHidden = isHiddenBar
             
             //取出cell
-            let cell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: page, inSection: 0)) as! ItemCell
+            let cell = collectionView.cellForItem(at: IndexPath(item: page, section: 0)) as! ItemCell
             cell.toggleDisplayBottomBar(isHiddenBar)
             
         }else{
@@ -105,38 +105,38 @@ extension PhotoBrowser{
     }
     
     
-    func dismissAction(isZoomType: Bool){
+    func dismissAction(_ isZoomType: Bool){
         
-        UIApplication.sharedApplication().statusBarHidden = isStatusBarHidden
+        UIApplication.shared.isStatusBarHidden = isStatusBarHidden
         
-        if vc.navigationController != nil {vc.navigationController?.navigationBarHidden = isNavBarHidden}
-        if vc.tabBarController != nil {vc.tabBarController?.tabBar.hidden = isTabBarHidden}
+        if vc.navigationController != nil {vc.navigationController?.isNavigationBarHidden = isNavBarHidden}
+        if vc.tabBarController != nil {vc.tabBarController?.tabBar.isHidden = isTabBarHidden}
         
-        if showType == ShowType.Push || showType == ShowType.Modal {return}
+        if showType == ShowType.push || showType == ShowType.modal {return}
         
         /** 关闭动画 */
         zoomOutWithAnim(page)
         
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: CFPBShowKey)
-        NSNotificationCenter.defaultCenter().postNotificationName(PhotoBrowserDidDismissNoti, object: self)
+        UserDefaults.standard.set(false, forKey: CFPBShowKey)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: PhotoBrowserDidDismissNoti), object: self)
     }
     
     
     func dismissPrepare(){
         
-        if showType == .Push{
+        if showType == .push{
             
-            self.navigationController?.popViewControllerAnimated(true)
-            
-            dismissAction(false)
-            
-        }else if showType == .Modal{
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
             
             dismissAction(false)
             
-        } else if showType == ShowType.ZoomAndDismissWithSingleTap{
+        }else if showType == .modal{
+            
+            self.dismiss(animated: true, completion: nil)
+            
+            dismissAction(false)
+            
+        } else if showType == ShowType.zoomAndDismissWithSingleTap{
             
             dismissAction(true)
             
@@ -152,11 +152,11 @@ extension PhotoBrowser{
         assert(photoModels != nil, "Error: You Must Set DataModels!")
         assert(index <= photoModels.count - 1, "Error: Index is Out of DataModels' Boundary!")
         
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: CFPBShowKey)
+        UserDefaults.standard.set(true, forKey: CFPBShowKey)
         
-        isStatusBarHidden = UIApplication.sharedApplication().statusBarHidden
+        isStatusBarHidden = UIApplication.shared.isStatusBarHidden
         
-        UIApplication.sharedApplication().statusBarHidden = true
+        UIApplication.shared.isStatusBarHidden = true
         
         //记录index
         showIndex = index
@@ -166,20 +166,20 @@ extension PhotoBrowser{
         
         let navVC = vc.navigationController
         
-        if vc.navigationController != nil { isNavBarHidden = vc.navigationController?.navigationBarHidden}
-        if vc.tabBarController != nil { isTabBarHidden = vc.tabBarController?.tabBar.hidden}
+        if vc.navigationController != nil { isNavBarHidden = vc.navigationController?.isNavigationBarHidden}
+        if vc.tabBarController != nil { isTabBarHidden = vc.tabBarController?.tabBar.isHidden}
         
-        navVC?.navigationBarHidden = true
-        vc.tabBarController?.tabBar.hidden = true
+        navVC?.isNavigationBarHidden = true
+        vc.tabBarController?.tabBar.isHidden = true
         
-        if showType == .Push{//push
+        if showType == .push{//push
             
             vc.hidesBottomBarWhenPushed = true
             vc.navigationController?.pushViewController(self, animated: true)
             
-        }else if showType == .Modal{
+        }else if showType == .modal{
             
-            vc.presentViewController(self, animated: true, completion: nil)
+            vc.present(self, animated: true, completion: nil)
             
         }else{
             
@@ -187,14 +187,14 @@ extension PhotoBrowser{
             vc.view.addSubview(self.view)
             
             //添加约束
-            self.view.make_4Inset(UIEdgeInsetsZero)
+            self.view.make_4Inset(inset: UIEdgeInsets.zero)
             
             vc.addChildViewController(self)
             
             /** 展示动画 */
             zoomInWithAnim(index)
             
-            if showType == PhotoBrowser.ShowType.ZoomAndDismissWithSingleTap && hideMsgForZoomAndDismissWithSingleTap {
+            if showType == PhotoBrowser.ShowType.zoomAndDismissWithSingleTap && hideMsgForZoomAndDismissWithSingleTap {
             
                 /** pagecontrol准备 */
                 pagecontrolPrepare()
@@ -202,7 +202,7 @@ extension PhotoBrowser{
             }
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(PhotoBrowserDidShowNoti, object: self)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: PhotoBrowserDidShowNoti), object: self)
     
     }
     

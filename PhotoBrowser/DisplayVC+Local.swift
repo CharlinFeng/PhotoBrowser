@@ -48,7 +48,7 @@ extension DisplayVC {
     
     
     /** 本地相册 */
-    func showLocal(index: Int){
+    func showLocal(_ index: Int){
         
         
         let pbVC = PhotoBrowser()
@@ -57,18 +57,18 @@ extension DisplayVC {
         pbVC.showType = showType
         
         /**  设置相册类型  */
-        pbVC.photoType = PhotoBrowser.PhotoType.Local
+        pbVC.photoType = PhotoBrowser.PhotoType.local
         
         //强制关闭显示一切信息
         pbVC.hideMsgForZoomAndDismissWithSingleTap = true
         
         var models: [PhotoBrowser.PhotoModel] = []
         
-        let title = langType == LangType.Chinese ? titleLocalCH : titleEN
-        let desc = langType == LangType.Chinese ? descLocalCH : descLocalEN
+        let title = langType == LangType.chinese ? titleLocalCH : titleEN
+        let desc = langType == LangType.chinese ? descLocalCH : descLocalEN
         
         //模型数据数组
-        for (var i=0; i<9; i++){
+        for i in 0 ..< 9 {
         
            let model = PhotoBrowser.PhotoModel(localImg:UIImage(named: "\(i+1).jpg")! , titleStr: title, descStr:desc[i], sourceView: displayView.subviews[i] as! UIView)
             

@@ -21,16 +21,16 @@ let CFPBCacheKey = "CFPBCacheKey"
 
 extension CGSize{
     
-    var sizeWithExtraWidth: CGSize {return CGSizeMake(self.width + CFPBExtraWidth, self.height)}
+    var sizeWithExtraWidth: CGSize {return CGSize(width: self.width + CFPBExtraWidth, height: self.height)}
     
-    var sizeMinusExtraWidth: CGSize {return CGSizeMake(self.width - CFPBExtraWidth, self.height)}
+    var sizeMinusExtraWidth: CGSize {return CGSize(width: self.width - CFPBExtraWidth, height: self.height)}
     
     /** 按比例缩放 */
-    func ratioSize(ratio: CGFloat) -> CGSize{
+    func ratioSize(_ ratio: CGFloat) -> CGSize{
     
-        return CGSizeMake(self.width / ratio, self.height / ratio) }
+        return CGSize(width: self.width / ratio, height: self.height / ratio) }
     
-    static func decisionShowSize(imgSize: CGSize, contentSize: CGSize) ->CGSize{
+    static func decisionShowSize(_ imgSize: CGSize, contentSize: CGSize) ->CGSize{
         
         let heightRatio = imgSize.height / contentSize.height
         let widthRatio = imgSize.width / contentSize.width
@@ -50,8 +50,8 @@ extension CGSize{
 extension UIView{
     
     /** Debug */
-    func debug(color: UIColor = UIColor.redColor(), borderWidth: CGFloat = 5){
-        self.layer.borderColor = color.CGColor
+    func debug(_ color: UIColor = UIColor.red, borderWidth: CGFloat = 5){
+        self.layer.borderColor = color.cgColor
         self.layer.borderWidth = borderWidth
     }
 
@@ -62,9 +62,9 @@ extension UIView{
 extension UIImage{
     
     /** 源于色彩的UIImage，可自定义size */
-    class func imageWithColor(color: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1), size: CGSize = CGSizeMake(1, 1)) -> UIImage{
+    class func imageWithColor(_ color: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1), size: CGSize = CGSize(width: 1, height: 1)) -> UIImage{
         
-        let rect = CGRectMake(0, 0, size.width, size.height)
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         
         //开启一个图形上下文
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
@@ -72,9 +72,9 @@ extension UIImage{
         //获取图形上下文
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetFillColorWithColor(context, color.CGColor)
+        context?.setFillColor(color.cgColor)
         
-        CGContextFillRect(context, rect)
+        context?.fill(rect)
         
         //获取图像
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -82,7 +82,7 @@ extension UIImage{
         //关闭上下文
         UIGraphicsEndImageContext();
         
-        return image;
+        return image!;
     }
 }
 

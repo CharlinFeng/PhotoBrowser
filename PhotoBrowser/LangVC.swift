@@ -10,8 +10,8 @@ import UIKit
 
 enum LangType: Int{
     
-    case English
-    case Chinese
+    case english
+    case chinese
 }
 
 
@@ -30,7 +30,7 @@ class LangVC: UIViewController {
 extension LangVC{
     
     
-    @IBAction func btnClick(sender: UIButton) {
+    @IBAction func btnClick(_ sender: UIButton) {
         
         let photoTypeChooseVC = PhotoTypeChooseVC(nibName: "PhotoTypeChooseVC", bundle: nil)
         photoTypeChooseVC.langType = LangType(rawValue: sender.tag)
